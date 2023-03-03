@@ -2,10 +2,16 @@ package com.r0r5chach.services;
 
 import org.bson.Document;
 
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+
 import spark.Request;
 import spark.Response;
 
-public class Service {
+
+public class DBService {
+    private static final MongoDatabase client = MongoClients.create().getDatabase("woodlands");
+    
     public static Document get(Request req, Response res) {
         //TODO: Create GET method
         return new Document();
