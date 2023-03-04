@@ -1,0 +1,52 @@
+#Development
+    [ ] DBService
+        [!] implement authentication for database access
+        [o] Multiple Document Queries
+            [o] getMany method
+            [o] postMany method
+            [o] putMany method
+            [o] deleteMany method
+            [o] implement methods in entrypoint
+            [ ] optionsMany method
+        [x] Single Document Queries
+            [ ] optionsOne method
+            [x] getOne method
+            [x] postOne method
+            [x] putOne method
+            [x] deleteOne method
+            [x] implement methods in entrypoint
+        [ ] options method
+    [ ] AuthService
+        [!] implement authentication
+        [o] post method
+        [o] options method
+        [ ] authenticate method
+    [ ] App
+        [x] Route DBService
+            [x] Route Multiple Document Queries
+            [x] Route Single Document Queries
+        [x] Route AuthService
+#Tests
+    [ ] AppTest
+        [ ] main method test
+    [ ] DBServiceTest
+        [ ] Single Document Query tests
+            [ ] getOne method test
+            [ ] postOne method test
+            [ ] putOne method test
+            [ ] deleteOne method test
+            [ ] optionsOne method test
+        [ ] Multiple Document Query tests
+            [ ] getMany method test
+            [ ] postMany method test
+            [ ] putMany method test
+            [ ] deleteMany method test
+            [ ] optionsMany method test
+    [ ] AuthServiceTest
+        [ ] post method test
+        [ ] options method test
+        [ ] authenticate method test
+#Misc
+    [ ] Create UML
+    [ ] Create java wrapper for api
+    [ ] Create php wrapper for api
