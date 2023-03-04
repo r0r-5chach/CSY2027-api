@@ -109,4 +109,20 @@ public class DBService {
             return 404;
         }
     }
+
+    public static String getMany(Request req, Response res) {
+        res.type("application/json");
+        Document query = parse(req.body());
+        MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
+        
+        if (col.countDocuments(query) > 0) {
+            res.status(200);
+            //TODO: return All documents as json list
+            return "";
+        } 
+        else {
+            res.status(500);
+            return "{\"response\":\"No Documents found\"}";
+        }   
+    }
 }
