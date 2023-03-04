@@ -1,0 +1,12 @@
+#DBService
+    [!] implement authentication for database access
+    [o] Multiple Document Queries
+        [o] getMany method
+        [o] postMany method
+        [o] putMany method
+        [o] deleteMany method
+        [ ] implement methods in entrypoint
+#AuthService
+    [!] implement authentication
+    [ ] post method
+    [ ] authenticate method
