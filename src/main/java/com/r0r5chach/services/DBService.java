@@ -5,6 +5,7 @@ import static org.bson.Document.parse;
 import org.bson.Document;
 
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import spark.Request;
@@ -25,9 +26,15 @@ public class DBService {
     public static String getOne(Request req, Response res) {
         res.type("application/json");
         Document query = parse(req.body());
-        Document result = client.getCollection(req.queryMap().get("collection").value()).find(query).first();
-        res.status(200);
-        return result.toJson();
+        MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
+        if (col.countDocuments(query) > 0) {
+            res.status(200);
+            return col.find(query).first().toJson();
+        }
+        else {
+            res.status(500);
+            return "{\"response\":\"No Documents found\"}";
+        }
     }
     /**
      * Method that handles a POST request to route /db/one/
@@ -37,7 +44,14 @@ public class DBService {
      */
     public static int postOne(Request req, Response res) {
         Document item = parse(req.body());
-        client.getCollection(req.queryMap().get("collection").value()).insertOne(item);
+        try {
+            client.getCollection(req.queryMap().get("collection").value()).insertOne(item);
+        }
+        catch (Exception e) {
+            res.status(500);
+            return 500;
+        }
+        
         res.status(201);
         return 201;
     }
@@ -51,7 +65,14 @@ public class DBService {
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
         Document update = parse(request.getString("update"));
-        client.getCollection(req.queryMap().get("collection").value()).updateOne(query, update);
+        try {
+            client.getCollection(req.queryMap().get("collection").value()).updateOne(query, update);
+        }
+        catch (Exception e) {
+            res.status(500);
+            return 500;
+        }
+
         res.status(200);
         return 200;
     }
@@ -59,12 +80,18 @@ public class DBService {
      * Method that handles a DELETE request to route /db/one/
      * @param req The request from the user
      * @param res The response to be sent to the user
-     * @return The appropriate response code (200 OK; 500 Internal error)
+     * @return The appropriate response code (200 OK; 404 Not Found)
      */
     public static int deleteOne(Request req, Response res) {
         Document query = parse(req.body());
-        client.getCollection(req.queryMap().get("collection").value()).findOneAndDelete(query);
-        res.status(200);
-        return 200;
+
+        if (client.getCollection(req.queryMap().get("collection").value()).findOneAndDelete(query) != null) {
+            res.status(200);
+            return 200;
+        }
+        else {
+            res.status(404);
+            return 404;
+        }
     }
 }
