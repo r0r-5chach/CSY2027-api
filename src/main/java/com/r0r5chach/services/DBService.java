@@ -22,6 +22,11 @@ public class DBService {
      */
     private static final MongoDatabase client = MongoClients.create().getDatabase("woodlands");
 
+    public static String options(Request req, Response res) {
+        //TODO: create options method for database service
+        return "";
+    }
+
     /**
      * Method that handles a GET request on route /db/one/
      * 
@@ -108,5 +113,58 @@ public class DBService {
             res.status(404);
             return 404;
         }
+    }
+
+    public static String optionsOne(Request req, Response res) {
+        //TODO: create options method for single document queries
+        return "";
+    }
+
+    /**
+     * Method that handles a GET request to route /db/many/
+     * @param req The request from the user
+     * @param res The response to be sent to the user
+     * @return A string containing the response in JSON format
+     */
+    public static String getMany(Request req, Response res) {
+        res.type("application/json");
+        Document query = parse(req.body());
+        MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
+        
+        if (col.countDocuments(query) > 0) {
+            res.status(200);
+            StringBuilder output = new StringBuilder("{\"results\" : [");
+            //TODO: test
+            for (Document result : col.find(query)) {
+                output.append("\"" + result.toJson() + "\",");
+            }
+            output.deleteCharAt(output.length());
+            output.append("]}");
+            return output.toString();
+        } 
+        else {
+            res.status(500);
+            return "{\"response\":\"No Documents found\"}";
+        }   
+    }
+
+    public static int postMany(Request req, Response res) {
+        //TODO: create post method for multiple document queries
+        return 0;
+    }
+
+    public static int putMany(Request req, Response res) {
+        //TODO: create put method for multiple document queries
+        return 0;
+    }
+
+    public static int deleteMany(Request req, Response res) {
+        //TODO: create delete method for multiple document queries
+        return 0;
+    }
+
+    public static int optionsMany(Request req, Response res) {
+        //TODO: create options method for multiple document queries
+        return 0;
     }
 }
