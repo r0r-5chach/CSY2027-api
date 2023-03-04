@@ -11,7 +11,10 @@ import com.mongodb.client.MongoDatabase;
 import spark.Request;
 import spark.Response;
 
-
+/**
+ * Class that handles communicating to the database
+ * @author r0r-5chach
+ */
 public class DBService {
     /**
      * Static constant creating a client to access the database
