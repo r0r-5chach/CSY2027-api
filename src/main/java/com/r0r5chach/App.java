@@ -8,7 +8,9 @@ import static spark.Spark.post;
 import static spark.Spark.put;
 
 import com.r0r5chach.services.AuthService;
-import com.r0r5chach.services.DBService;;
+import com.r0r5chach.services.DBService;
+import com.r0r5chach.services.MultipleDocumentService;
+import com.r0r5chach.services.SingleDocumentService;
 /**
  * Class that handles the entry point for the api and setup routes
  * 
@@ -26,28 +28,28 @@ public class App
             //Single Document Queries
             path("/one", () -> {
                 //GET domain.com/db/one/?token&collection
-                get("/", DBService::getOne); //get Document
+                get("/", SingleDocumentService::get); //get Document
                 //POST domain.com/db/one/?token&collection=
-                post("/", DBService::postOne); //make Document 
+                post("/", SingleDocumentService::post); //make Document 
                 //PUT domain.com/db/one/?token&collection
-                put("/", DBService::putOne); //update Document
+                put("/", SingleDocumentService::put); //update Document
                 //DELETE domain.com/db/one/?token&collection
-                delete("/", DBService::deleteOne); //delete Document
+                delete("/", SingleDocumentService::delete); //delete Document
                 //OPTIONS domain.com/db/one/?token
-                options("/", DBService::optionsOne); //return available options for route
+                options("/", SingleDocumentService::options); //return available options for route
             });
             //Multiple Document Queries
             path("/many", () -> {
                 //GET domain.com/db/many/?token&collection
-                get("/", DBService::getMany); //get Documents
+                get("/", MultipleDocumentService::get); //get Documents
                 //POST domain.com/db/many/?token&collection
-                post("/", DBService::postMany); //make Documents
+                post("/", MultipleDocumentService::post); //make Documents
                 //PUT domain.com/db/many/?token&collection
-                put("/", DBService::putMany); //update Documents
+                put("/", MultipleDocumentService::put); //update Documents
                 //DELETE domain.com/db/many/?token&collection
-                delete("/", DBService::deleteMany); //delete Documents
+                delete("/", MultipleDocumentService::delete); //delete Documents
                 //OPTIONS domain.com/db/many/?token
-                options("/", DBService::optionsMany); //return available options for route
+                options("/", MultipleDocumentService::options); //return available options for route
             });
             //OPTIONS domain.com/db/?token
             options("/", DBService::options); //return available options for sub-routes
