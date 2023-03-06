@@ -4,6 +4,7 @@ import static org.bson.Document.parse;
 
 import org.bson.Document;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
 import spark.Request;
@@ -23,14 +24,7 @@ public class MultipleDocumentService extends DBService{
         
         if (col.countDocuments(query) > 0) {
             res.status(200);
-            StringBuilder output = new StringBuilder("{\"results\" : [");
-            //TODO: test
-            for (Document result : col.find(query)) {
-                output.append("\"" + result.toJson() + "\",");
-            }
-            output.deleteCharAt(output.length());
-            output.append("]}");
-            return output.toString();
+            return toJson(col.find(query));  
         } 
         else {
             res.status(500);
@@ -56,5 +50,16 @@ public class MultipleDocumentService extends DBService{
     public static String options(Request req, Response res) {
         //TODO: create options method for multiple document queries
         return "";
-    }   
+    }
+
+    private static String toJson(FindIterable<Document> docs) {
+        StringBuilder output = new StringBuilder("{\"results\" : [");
+        //TODO: test
+        for (Document doc : docs) {
+            output.append("\"" + doc.toJson() + "\",");
+        }
+        output.deleteCharAt(output.length());
+        output.append("]}");
+        return output.toString();
+    }
 }

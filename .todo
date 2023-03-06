@@ -2,18 +2,18 @@
     [ ] DBService
         [!] implement authentication for database access
         [o] Multiple Document Queries
-            [o] getMany method
-            [o] postMany method
-            [o] putMany method
-            [o] deleteMany method
+            [o] get method
+            [o] post method
+            [o] put method
+            [o] delete method
             [o] implement methods in entrypoint
             [ ] optionsMany method
         [x] Single Document Queries
-            [ ] optionsOne method
-            [x] getOne method
-            [x] postOne method
-            [x] putOne method
-            [x] deleteOne method
+            [ ] options method
+            [x] get method
+            [x] post method
+            [x] put method
+            [x] delete method
             [x] implement methods in entrypoint
         [ ] options method
     [ ] AuthService
@@ -31,17 +31,17 @@
         [ ] main method test
     [ ] DBServiceTest
         [ ] Single Document Query tests
-            [ ] getOne method test
-            [ ] postOne method test
-            [ ] putOne method test
-            [ ] deleteOne method test
-            [ ] optionsOne method test
+            [ ] get method test
+            [ ] post method test
+            [ ] put method test
+            [ ] delete method test
+            [ ] options method test
         [ ] Multiple Document Query tests
-            [ ] getMany method test
-            [ ] postMany method test
-            [ ] putMany method test
-            [ ] deleteMany method test
-            [ ] optionsMany method test
+            [ ] get method test
+            [ ] post method test
+            [ ] put method test
+            [ ] delete method test
+            [ ] options method test
     [ ] AuthServiceTest
         [ ] post method test
         [ ] options method test
