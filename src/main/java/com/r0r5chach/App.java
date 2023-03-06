@@ -24,6 +24,7 @@ public class App
      */
     public static void main( String[] args )
     {
+        //Route domain.com/db/
         path("/db", () -> {
             //Single Document Queries
             path("/one", () -> {
