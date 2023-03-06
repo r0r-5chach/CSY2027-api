@@ -1,5 +1,6 @@
 #Development
     [ ] DBService
+        [o] Add an authenticate method that checks auth then routes through switch
         [!] implement authentication for database access
         [o] Multiple Document Queries
             [ ] options method

@@ -12,14 +12,15 @@ import com.mongodb.client.MongoCollection;
 import spark.Request;
 import spark.Response;
 
-public class MultipleDocumentService extends DBService{
- /**
+public class MultipleDocumentService extends SecureDBService{
+
+     /**
      * Method that handles a GET request to route /db/many/
      * @param req The request from the user
      * @param res The response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public static String get(Request req, Response res) {
+    protected static String get(Request req, Response res) {
         //TODO: test
         res.type("application/json");
         Document query = parse(req.body());
@@ -35,7 +36,7 @@ public class MultipleDocumentService extends DBService{
         }   
     }
 
-    public static String post(Request req, Response res) {
+    protected static String post(Request req, Response res) {
         //TODO: test
         List<Document> items = parse(req.body()).getList("result", Document.class);
 
@@ -51,7 +52,7 @@ public class MultipleDocumentService extends DBService{
         return "{\"response\":\"Insert successful\"}";
     }
 
-    public static String put(Request req, Response res) {
+    protected static String put(Request req, Response res) {
         //TODO: test
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
@@ -69,7 +70,7 @@ public class MultipleDocumentService extends DBService{
         return "{\"response\":\"Update successful\"}";
     }
 
-    public static String delete(Request req, Response res) {
+    protected static String delete(Request req, Response res) {
         //TODO: test
         Document query = parse(req.body());
 
@@ -85,7 +86,7 @@ public class MultipleDocumentService extends DBService{
         return "{\"response\":\"Delete successful\"}";
     }
 
-    public static String options(Request req, Response res) {
+    protected static String options(Request req, Response res) {
         //TODO: create options method for multiple document queries
         return "";
     }

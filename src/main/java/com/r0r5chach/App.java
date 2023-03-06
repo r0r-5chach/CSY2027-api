@@ -28,38 +28,38 @@ public class App
             //Single Document Queries
             path("/one", () -> {
                 //GET domain.com/db/one/?token&collection
-                get("/", SingleDocumentService::get); //get Document
+                get("/", SingleDocumentService::authenticate); //get Document
                 //POST domain.com/db/one/?token&collection=
-                post("/", SingleDocumentService::post); //make Document 
+                post("/", SingleDocumentService::authenticate); //make Document 
                 //PUT domain.com/db/one/?token&collection
-                put("/", SingleDocumentService::put); //update Document
+                put("/", SingleDocumentService::authenticate); //update Document
                 //DELETE domain.com/db/one/?token&collection
-                delete("/", SingleDocumentService::delete); //delete Document
+                delete("/", SingleDocumentService::authenticate); //delete Document
                 //OPTIONS domain.com/db/one/?token
-                options("/", SingleDocumentService::options); //return available options for route
+                options("/", SingleDocumentService::authenticate); //return available options for route
             });
             //Multiple Document Queries
             path("/many", () -> {
                 //GET domain.com/db/many/?token&collection
-                get("/", MultipleDocumentService::get); //get Documents
+                get("/", MultipleDocumentService::authenticate); //get Documents
                 //POST domain.com/db/many/?token&collection
-                post("/", MultipleDocumentService::post); //make Documents
+                post("/", MultipleDocumentService::authenticate); //make Documents
                 //PUT domain.com/db/many/?token&collection
-                put("/", MultipleDocumentService::put); //update Documents
+                put("/", MultipleDocumentService::authenticate); //update Documents
                 //DELETE domain.com/db/many/?token&collection
-                delete("/", MultipleDocumentService::delete); //delete Documents
+                delete("/", MultipleDocumentService::authenticate); //delete Documents
                 //OPTIONS domain.com/db/many/?token
-                options("/", MultipleDocumentService::options); //return available options for route
+                options("/", MultipleDocumentService::authenticate); //return available options for route
             });
             //OPTIONS domain.com/db/?token
-            options("/", DBService::options); //return available options for sub-routes
+            options("/", DBService::authenticate); //return available options for sub-routes
         });
         //Authentication
         path("/auth", () -> {
             //POST domain.com/auth/
-            post("/", AuthService::post); //request api token
+            post("/", AuthService::authenticate); //request api token
             //OPTIONS domain.com/auth/
-            options("/", AuthService::options); //return available options for route
+            options("/", AuthService::authenticate); //return available options for route
         });
     }
 }

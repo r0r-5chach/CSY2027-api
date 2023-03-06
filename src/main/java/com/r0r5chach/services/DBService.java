@@ -11,14 +11,14 @@ import spark.Response;
  * 
  * @author r0r-5chach
  */
-public class DBService {
+public class DBService extends Service {
     /**
      * Static constant creating a client to access the database
      */
     protected static final MongoDatabase client = MongoClients.create().getDatabase("woodlands");
 
-    public static String options(Request req, Response res) {
+    protected static String options(Request req, Response res) {
         //TODO: create options method for database service
         return "";
-    }    
+    }   
 }

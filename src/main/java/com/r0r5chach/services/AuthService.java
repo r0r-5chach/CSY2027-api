@@ -15,7 +15,7 @@ import spark.Request;
 import spark.Response;
 
 public class AuthService extends DBService {
-    public static String post(Request req, Response res) {
+    protected static String post(Request req, Response res) {
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection("users");
         if (col.countDocuments(query) < 0) {
