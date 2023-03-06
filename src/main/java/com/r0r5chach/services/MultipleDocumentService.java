@@ -62,7 +62,7 @@ public class MultipleDocumentService extends DBService{
         } 
         catch (Exception e) {
             res.status(500);
-            return "{\"response\":\"Update successful\"}";            
+            return "{\"response\":\"Update failed\"}";            
         }
 
         res.status(200);
@@ -70,14 +70,15 @@ public class MultipleDocumentService extends DBService{
     }
 
     public static String delete(Request req, Response res) {
+        //TODO: test
         Document query = parse(req.body());
 
         try {
             client.getCollection(req.queryMap().get("collection").value()).deleteMany(query);
         } 
         catch (Exception e) {
-            res.status(404);
-            return "{\"response\":\"Delete successful\"}";
+            res.status(500);
+            return "{\"response\":\"Delete failed\"}";
         }
         
         res.status(200);

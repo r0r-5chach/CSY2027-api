@@ -71,7 +71,7 @@ public class SingleDocumentService extends DBService {
         } 
         catch (Exception e) {
             res.status(500);
-            return "{\"response\":\"Update successful\"}";            
+            return "{\"response\":\"Update failed\"}";            
         }
 
         res.status(200);
@@ -91,8 +91,8 @@ public class SingleDocumentService extends DBService {
             client.getCollection(req.queryMap().get("collection").value()).deleteOne(query);
         }
         catch (Exception e) {
-            res.status(404);
-            return "{\"response\":\"Delete successful\"}";
+            res.status(500);
+            return "{\"response\":\"Delete failed\"}";
         }
 
         res.status(200);
