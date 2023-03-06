@@ -1,4 +1,5 @@
 #Development
+    [ ] Create implemented versions of SecureDBService and DBService (move options methods to own class outside of generic package)
     [x] Service
         [x] get method
         [x] post method
