@@ -87,15 +87,16 @@ public class SingleDocumentService extends DBService {
      */
     public static String delete(Request req, Response res) {
         Document query = parse(req.body());
-
-        if (client.getCollection(req.queryMap().get("collection").value()).findOneAndDelete(query) != null) {
-            res.status(200);
-            return "{\"response\":\"Delete successful\"}";
-        } 
-        else {
+        try {
+            client.getCollection(req.queryMap().get("collection").value()).deleteOne(query);
+        }
+        catch (Exception e) {
             res.status(404);
             return "{\"response\":\"Delete successful\"}";
         }
+
+        res.status(200);
+        return "{\"response\":\"Delete successful\"}";
     }
 
     public static String options(Request req, Response res) {
