@@ -119,31 +119,3 @@
     [ ] Create UML
     [ ] Create java wrapper for api
     [ ] Create php wrapper for api
-=======
-#DBService
-    [!] implement authentication for database access
-    [o] Multiple Document Queries
-        [o] getMany method
-        [o] postMany method
-        [o] putMany method
-        [o] deleteMany method
-        [ ] implement methods in entrypoint
-    [x] Single Document Queries
-        [x] getOne method
-        [x] postOne method
-        [x] putOne method
-        [x] deleteOne method
-        [x] implement methods in entrypoint
-#AuthService
-    [!] implement authentication
-    [ ] post method
-    [ ] authenticate method
-#App
-    [ ] Route DBService
-        [ ] Route Multiple Document Queries
-        [x] Route Single Document Queries
-    [x] Route AuthService
-#AppTest
-    [ ] main method test
-
-#Misc
