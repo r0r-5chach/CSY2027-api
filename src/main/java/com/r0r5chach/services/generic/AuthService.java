@@ -41,7 +41,7 @@ public class AuthService extends DBService {
     }
 
     public static String options(Request req, Response res) {
-        //TODO: return options availabe for auth service
+        //TODO: return options available for auth service
         return "";
     }
 
