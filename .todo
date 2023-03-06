@@ -7,8 +7,9 @@
             [o] put method
             [o] delete method
             [o] implement methods in entrypoint
-            [ ] optionsMany method
-        [x] Single Document Queries
+            [ ] options method
+            [x] toJson method
+        [ ] Single Document Queries
             [ ] options method
             [x] get method
             [x] post method
@@ -16,16 +17,37 @@
             [x] delete method
             [x] implement methods in entrypoint
         [ ] options method
-    [ ] AuthService
-        [!] implement authentication
-        [o] post method
-        [o] options method
-        [ ] authenticate method
+        [ ] AuthService
+            [!] implement authentication
+            [o] post method
+            [o] options method
+            [ ] authenticate method
     [ ] App
         [x] Route DBService
             [x] Route Multiple Document Queries
             [x] Route Single Document Queries
         [x] Route AuthService
+#Documentation
+    [ ] DBService
+        [ ] options method
+        [ ] client attribute
+        [ ] Single Document Queries
+            [ ] get method
+            [ ] post method
+            [ ] put method
+            [ ] delete method
+            [ ] options method
+        [ ] Multiple Document Queries
+            [ ] get method
+            [ ] post method
+            [ ] put method
+            [ ] delete method
+            [ ] options method
+            [ ] toJson method
+        [ ] AuthService
+            [ ] options method
+            [ ] post method
+            [ ] authenticate method
 #Tests
     [ ] AppTest
         [ ] main method test
@@ -42,10 +64,11 @@
             [ ] put method test
             [ ] delete method test
             [ ] options method test
-    [ ] AuthServiceTest
-        [ ] post method test
-        [ ] options method test
-        [ ] authenticate method test
+            [ ] toJson method test
+        [ ] AuthServiceTest
+            [ ] post method test
+            [ ] options method test
+            [ ] authenticate method test
 #Misc
     [ ] Create UML
     [ ] Create java wrapper for api
