@@ -8,8 +8,8 @@ import static spark.Spark.post;
 import static spark.Spark.put;
 
 import com.r0r5chach.services.AuthService;
-import com.r0r5chach.services.DBService;
 import com.r0r5chach.services.MultipleDocumentService;
+import com.r0r5chach.services.SecureDBService;
 import com.r0r5chach.services.SingleDocumentService;
 /**
  * Class that handles the entry point for the api and setup routes
@@ -52,7 +52,7 @@ public class App
                 options("/", MultipleDocumentService::authenticate); //return available options for route
             });
             //OPTIONS domain.com/db/?token
-            options("/", DBService::authenticate); //return available options for sub-routes
+            options("/", SecureDBService::authenticate); //return available options for sub-routes
         });
         //Authentication
         path("/auth", () -> {

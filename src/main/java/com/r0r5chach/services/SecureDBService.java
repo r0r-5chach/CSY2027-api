@@ -23,4 +23,9 @@ public class SecureDBService extends DBService {
             return "{\"response\":\"Unauthorized\"}";
         }
     }
+
+    protected static String options(Request req, Response res) {
+        //TODO: create options method for database service
+        return "";
+    }
 }

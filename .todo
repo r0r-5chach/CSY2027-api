@@ -7,11 +7,11 @@
         [x] authenticate method
         [x] noEndpoint method
     [x] 
-    [ ] DBService
-        [ ] options method
+    [x] DBService
         [x] client attribute
         [x] getDB method
-    [x] SecureDBService
+    [o] SecureDBService
+        [ ] options method
         [x] authenticate method
     [o] Multiple Document Queries
         [ ] options method
@@ -28,7 +28,7 @@
         [x] put method
         [x] delete method
         [o] implement methods in entrypoint
-    [ ] AuthService
+    [o] AuthService
         [ ] options method
         [x] implement authentication
         [x] tokenExists method
