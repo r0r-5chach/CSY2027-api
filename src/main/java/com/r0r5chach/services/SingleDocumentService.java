@@ -5,23 +5,24 @@ import static org.bson.Document.parse;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
+import com.r0r5chach.services.generic.SecureDBService;
 
 import spark.Request;
 import spark.Response;
 
-public class SingleDocumentService extends DBService {
-        /**
+public class SingleDocumentService extends SecureDBService {
+    
+     /**
      * Method that handles a GET request on route /db/one/
      * 
      * @param req the request from the user
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public static String get(Request req, Response res) {
-        res.type("application/json");
+    protected static String get(Request req, Response res) {
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
-        
+            
         if (col.countDocuments(query) > 0) {
             res.status(200);
             return col.find(query).first().toJson();
@@ -39,7 +40,7 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public static String post(Request req, Response res) {
+    protected static String post(Request req, Response res) {
         Document item = parse(req.body());
 
         try {
@@ -61,7 +62,7 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public static String put(Request req, Response res) {
+    protected static String put(Request req, Response res) {
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
         Document update = new Document().append("$set", parse(request.getString("update")));
@@ -85,7 +86,7 @@ public class SingleDocumentService extends DBService {
      * @param res The response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public static String delete(Request req, Response res) {
+    protected static String delete(Request req, Response res) {
         Document query = parse(req.body());
         try {
             client.getCollection(req.queryMap().get("collection").value()).deleteOne(query);
@@ -99,7 +100,7 @@ public class SingleDocumentService extends DBService {
         return "{\"response\":\"Delete successful\"}";
     }
 
-    public static String options(Request req, Response res) {
+    protected static String options(Request req, Response res) {
         //TODO: create options method for single document queries
         return "";
     }

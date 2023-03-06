@@ -1,74 +1,120 @@
 #Development
-    [ ] DBService
-        [!] implement authentication for database access
-        [o] Multiple Document Queries
-            [x] get method
-            [x] post method
-            [x] put method
-            [x] delete method
-            [x] implement methods in entrypoint
-            [ ] options method
-            [x] toJson method
-        [o] Single Document Queries
-            [ ] options method
-            [x] get method
-            [x] post method
-            [x] put method
-            [x] delete method
-            [x] implement methods in entrypoint
+    [ ] Create implemented versions of SecureDBService and DBService (move options methods to own class outside of generic package)
+    [o] SecureDBService
         [ ] options method
-        [ ] AuthService
-            [!] implement authentication
-            [o] post method
-            [o] options method
-            [ ] authenticate method
-    [ ] App
+        [x] authenticate method
+    [o] Multiple Document Queries
+        [o] implement methods in entrypoint
+        [ ] options method
+        [x] get method
+        [x] post method
+        [x] put method
+        [x] delete method
+        [x] toJson method
+    [o] Single Document Queries
+        [o] implement methods in entrypoint
+        [ ] options method
+        [x] get method
+        [x] post method
+        [x] put method
+        [x] delete method
+    [o] AuthService
+        [ ] options method
+        [x] implement authentication
+        [x] tokenExists method
+        [x] post method
+            [x] implement in entrypoint
+        [x] generateToken method
+        [x] generateBytes method
+        [x] byteToHex method
+        [x] encodeHexString method
+    [x] DBService
+        [x] client attribute
+        [x] getDB method
+    [x] Service
+        [x] get method
+        [x] post method
+        [x] put method
+        [x] delete method
+        [x] authenticate method
+        [x] noEndpoint method
+    [x] App
         [x] Route DBService
             [x] Route Multiple Document Queries
             [x] Route Single Document Queries
         [x] Route AuthService
 #Documentation
     [ ] DBService
-        [ ] options method
         [ ] client attribute
-        [ ] Single Document Queries
-            [ ] get method
-            [ ] post method
-            [ ] put method
-            [ ] delete method
-            [ ] options method
-        [ ] Multiple Document Queries
-            [ ] get method
-            [ ] post method
-            [ ] put method
-            [ ] delete method
-            [ ] options method
-            [ ] toJson method
-        [ ] AuthService
-            [ ] options method
-            [ ] post method
-            [ ] authenticate method
+    [ ] SecureDBService
+        [ ] authenticate method
+        [ ] options method
+    [ ] Single Document Queries
+        [ ] get method
+        [ ] post method
+        [ ] put method
+        [ ] delete method
+        [ ] options method
+    [ ] Multiple Document Queries
+        [ ] get method
+        [ ] post method
+        [ ] put method
+        [ ] delete method
+        [ ] options method
+        [ ] toJson method
+    [ ] AuthService
+        [ ] options method
+        [ ] post method
+        [ ] tokenExists method
+        [ ] generateToken method
+        [ ] generateBytes method
+        [ ] byteToHex method
+        [ ] encodeHexString method
+    [ ] Service
+        [ ] get method
+        [ ] post method
+        [ ] put method
+        [ ] delete method
+        [ ] options method
+        [ ] noEndpoint method
+        [ ] authenticate method
 #Tests
     [ ] AppTest
         [ ] main method test
-    [ ] DBServiceTest
-        [ ] Single Document Query tests
-            [ ] get method test
-            [ ] post method test
-            [ ] put method test
-            [ ] delete method test
-            [ ] options method test
-        [ ] Multiple Document Query tests
-            [ ] get method test
-            [ ] post method test
-            [ ] put method test
-            [ ] delete method test
-            [ ] options method test
-            [ ] toJson method test
-        [ ] AuthServiceTest
-            [ ] post method test
-            [ ] options method test
-            [ ] authenticate method test
+    [ ] DBService test
+        [ ] client attribute test
+    [ ] SecureDBServiceTest
+        [ ] authenticate method test
+        [ ] options method test
+    [ ] SingleDocumentServiceTest
+        [ ] get method test
+        [ ] post method test
+        [ ] put method test
+        [ ] delete method test
+        [ ] options method test
+    [ ] MultipleDocumentServiceTest
+        [ ] get method test
+        [ ] post method test
+        [ ] put method test
+        [ ] delete method test
+        [ ] options method test
+        [ ] toJson method test
+    [ ] AuthServiceTest
+        [ ] options method test
+        [ ] post method test
+        [ ] tokenExists method test
+        [ ] generateToken method test
+        [ ] generateBytes method test
+        [ ] byteToHex method test
+        [ ] encodeHexString method test
+    [ ] ServiceTest
+        [ ] get method test
+        [ ] post method test
+        [ ] put method test
+        [ ] delete method test
+        [ ] options method test
+        [ ] noEndpoint method test
+        [ ] authenticate method test
 #Misc
     [ ] Create UML
     [ ] Create java wrapper for api
