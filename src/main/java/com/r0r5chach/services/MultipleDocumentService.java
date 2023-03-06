@@ -2,6 +2,8 @@ package com.r0r5chach.services;
 
 import static org.bson.Document.parse;
 
+import java.util.List;
+
 import org.bson.Document;
 
 import com.mongodb.client.FindIterable;
@@ -18,6 +20,7 @@ public class MultipleDocumentService extends DBService{
      * @return A string containing the response in JSON format
      */
     public static String get(Request req, Response res) {
+        //TODO: test
         res.type("application/json");
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
@@ -32,19 +35,53 @@ public class MultipleDocumentService extends DBService{
         }   
     }
 
-    public static int post(Request req, Response res) {
-        //TODO: create post method for multiple document queries
-        return 0;
+    public static String post(Request req, Response res) {
+        //TODO: test
+        List<Document> items = parse(req.body()).getList("result", Document.class);
+
+        try {
+            client.getCollection(req.queryMap().get("collection").value()).insertMany(items);
+        } 
+        catch (Exception e) {
+            res.status(500);
+            return "{\"response\":\"Insert failed\"}";
+        }
+
+        res.status(201);
+        return "{\"response\":\"Insert successful\"}";
     }
 
-    public static int put(Request req, Response res) {
-        //TODO: create put method for multiple document queries
-        return 0;
+    public static String put(Request req, Response res) {
+        //TODO: test
+        Document request = parse(req.body());
+        Document query = parse(request.getString("query"));
+        Document update = new Document().append("$set", parse(request.getString("update")));
+
+        try {
+            client.getCollection(req.queryMap().get("collection").value()).updateMany(query, update);
+        } 
+        catch (Exception e) {
+            res.status(500);
+            return "{\"response\":\"Update successful\"}";            
+        }
+
+        res.status(200);
+        return "{\"response\":\"Update successful\"}";
     }
 
-    public static int delete(Request req, Response res) {
-        //TODO: create delete method for multiple document queries
-        return 0;
+    public static String delete(Request req, Response res) {
+        Document query = parse(req.body());
+
+        try {
+            client.getCollection(req.queryMap().get("collection").value()).deleteMany(query);
+        } 
+        catch (Exception e) {
+            res.status(404);
+            return "{\"response\":\"Delete successful\"}";
+        }
+        
+        res.status(200);
+        return "{\"response\":\"Delete successful\"}";
     }
 
     public static String options(Request req, Response res) {

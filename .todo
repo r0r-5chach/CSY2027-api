@@ -2,14 +2,14 @@
     [ ] DBService
         [!] implement authentication for database access
         [o] Multiple Document Queries
-            [o] get method
-            [o] post method
-            [o] put method
-            [o] delete method
-            [o] implement methods in entrypoint
+            [x] get method
+            [x] post method
+            [x] put method
+            [x] delete method
+            [x] implement methods in entrypoint
             [ ] options method
             [x] toJson method
-        [ ] Single Document Queries
+        [o] Single Document Queries
             [ ] options method
             [x] get method
             [x] post method
