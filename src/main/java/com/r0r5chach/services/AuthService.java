@@ -4,13 +4,13 @@ import spark.Request;
 import spark.Response;
 
 public class AuthService {
-    public static String post(Request req, Response res) {
-        //TODO: if username and password are correct return api token and store in db;Otherwise return 401 unauthorized
-        return "";
+    public static boolean post(Request req, Response res) {
+        //TODO: return api token on correct username and password
+        return false;
     }
 
-    public static boolean authenticate() {
-        //TODO: if token is valid return true;Otherwise delete token and return 401 unauthorized
+    public static boolean options(Request req, Response res) {
+        //TODO: return options availabe for auth service
         return false;
     }
 }

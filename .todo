@@ -1,3 +1,79 @@
+#Development
+    [ ] DBService
+        [!] implement authentication for database access
+        [o] Multiple Document Queries
+            [x] get method
+            [x] post method
+            [x] put method
+            [x] delete method
+            [x] implement methods in entrypoint
+            [ ] options method
+            [x] toJson method
+        [o] Single Document Queries
+            [ ] options method
+            [x] get method
+            [x] post method
+            [x] put method
+            [x] delete method
+            [x] implement methods in entrypoint
+        [ ] options method
+        [ ] AuthService
+            [!] implement authentication
+            [o] post method
+            [o] options method
+            [ ] authenticate method
+    [ ] App
+        [x] Route DBService
+            [x] Route Multiple Document Queries
+            [x] Route Single Document Queries
+        [x] Route AuthService
+#Documentation
+    [ ] DBService
+        [ ] options method
+        [ ] client attribute
+        [ ] Single Document Queries
+            [ ] get method
+            [ ] post method
+            [ ] put method
+            [ ] delete method
+            [ ] options method
+        [ ] Multiple Document Queries
+            [ ] get method
+            [ ] post method
+            [ ] put method
+            [ ] delete method
+            [ ] options method
+            [ ] toJson method
+        [ ] AuthService
+            [ ] options method
+            [ ] post method
+            [ ] authenticate method
+#Tests
+    [ ] AppTest
+        [ ] main method test
+    [ ] DBServiceTest
+        [ ] Single Document Query tests
+            [ ] get method test
+            [ ] post method test
+            [ ] put method test
+            [ ] delete method test
+            [ ] options method test
+        [ ] Multiple Document Query tests
+            [ ] get method test
+            [ ] post method test
+            [ ] put method test
+            [ ] delete method test
+            [ ] options method test
+            [ ] toJson method test
+        [ ] AuthServiceTest
+            [ ] post method test
+            [ ] options method test
+            [ ] authenticate method test
+#Misc
+    [ ] Create UML
+    [ ] Create java wrapper for api
+    [ ] Create php wrapper for api
+=======
 #DBService
     [!] implement authentication for database access
     [o] Multiple Document Queries
