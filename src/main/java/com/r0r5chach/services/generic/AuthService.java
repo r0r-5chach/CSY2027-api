@@ -1,4 +1,4 @@
-package com.r0r5chach.services;
+package com.r0r5chach.services.generic;
 
 import static org.bson.Document.parse;
 

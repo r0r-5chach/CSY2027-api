@@ -1,4 +1,4 @@
-package com.r0r5chach.services;
+package com.r0r5chach.services.generic;
 
 import java.io.FileReader;
 import java.util.Properties;

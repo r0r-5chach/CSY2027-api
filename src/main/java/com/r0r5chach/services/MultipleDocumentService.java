@@ -8,6 +8,7 @@ import org.bson.Document;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.r0r5chach.services.generic.SecureDBService;
 
 import spark.Request;
 import spark.Response;

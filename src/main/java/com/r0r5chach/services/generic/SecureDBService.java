@@ -1,6 +1,6 @@
-package com.r0r5chach.services;
+package com.r0r5chach.services.generic;
 
-import static com.r0r5chach.services.AuthService.tokenExists;
+import static com.r0r5chach.services.generic.AuthService.tokenExists;
 
 import spark.Request;
 import spark.Response;

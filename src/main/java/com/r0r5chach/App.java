@@ -7,10 +7,10 @@ import static spark.Spark.path;
 import static spark.Spark.post;
 import static spark.Spark.put;
 
-import com.r0r5chach.services.AuthService;
 import com.r0r5chach.services.MultipleDocumentService;
-import com.r0r5chach.services.SecureDBService;
 import com.r0r5chach.services.SingleDocumentService;
+import com.r0r5chach.services.generic.AuthService;
+import com.r0r5chach.services.generic.SecureDBService;
 /**
  * Class that handles the entry point for the api and setup routes
  * 
