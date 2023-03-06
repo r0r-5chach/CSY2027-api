@@ -1,32 +1,43 @@
 #Development
+    [x] Service
+        [x] get method
+        [x] post method
+        [x] put method
+        [x] delete method
+        [x] authenticate method
+        [x] noEndpoint method
+    [x] 
     [ ] DBService
-        [o] Add an authenticate method that checks auth then routes through switch
-        [!] implement authentication for database access
-        [o] Multiple Document Queries
-            [ ] options method
-            [x] get method
-            [x] post method
-            [x] put method
-            [x] delete method
-            [x] implement methods in entrypoint
-            [x] toJson method
-        [o] Single Document Queries
-            [ ] options method
-            [x] get method
-            [x] post method
-            [x] put method
-            [x] delete method
-            [x] implement methods in entrypoint
         [ ] options method
-        [ ] AuthService
-            [!] implement authentication
-            [ ] options method
-            [x] tokenExists method
-            [x] post method
-            [x] generateToken method
-            [x] generateBytes method
-            [x] byteToHex method
-            [x] encodeHexString method
+        [x] client attribute
+        [x] getDB method
+    [x] SecureDBService
+        [x] authenticate method
+    [o] Multiple Document Queries
+        [ ] options method
+        [x] get method
+        [x] post method
+        [x] put method
+        [x] delete method
+        [o] implement methods in entrypoint
+        [x] toJson method
+    [o] Single Document Queries
+        [ ] options method
+        [x] get method
+        [x] post method
+        [x] put method
+        [x] delete method
+        [o] implement methods in entrypoint
+    [ ] AuthService
+        [ ] options method
+        [x] implement authentication
+        [x] tokenExists method
+        [x] post method
+            [x] implement in entrypoint
+        [x] generateToken method
+        [x] generateBytes method
+        [x] byteToHex method
+        [x] encodeHexString method
     [x] App
         [x] Route DBService
             [x] Route Multiple Document Queries
