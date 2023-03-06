@@ -56,7 +56,7 @@ public class App
         });
         //Authentication
         path("/auth", () -> {
-            //POST domain.com/auth/?username=asd&password=asd
+            //POST domain.com/auth/
             post("/", AuthService::post); //request api token
             //OPTIONS domain.com/auth/
             options("/", AuthService::options); //return available options for route
