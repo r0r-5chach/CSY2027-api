@@ -38,7 +38,7 @@ public class MultipleDocumentService extends SecureDBService{
 
     protected static String post(Request req, Response res) {
         //TODO: test
-        List<Document> items = parse(req.body()).getList("result", Document.class);
+        List<Document> items = parse(req.body()).getList("docs", Document.class);
 
         try {
             client.getCollection(req.queryMap().get("collection").value()).insertMany(items);
