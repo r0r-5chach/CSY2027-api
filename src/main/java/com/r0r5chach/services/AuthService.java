@@ -45,7 +45,7 @@ public class AuthService extends DBService {
         return "";
     }
 
-    private static boolean tokenExists(String token) {
+    public static boolean tokenExists(String token) {
         Document query = new Document().append("token", token);
         if (client.getCollection("users").countDocuments(query) > 0) {
             return true;
