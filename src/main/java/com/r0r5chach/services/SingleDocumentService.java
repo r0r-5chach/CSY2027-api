@@ -37,9 +37,9 @@ public class SingleDocumentService extends DBService {
      * 
      * @param req the request from the user
      * @param res the response to be sent to the user
-     * @return The appropriate response code (201 Created; 500 Internal error)
+     * @return A string containing the response in JSON format
      */
-    public static int post(Request req, Response res) {
+    public static String post(Request req, Response res) {
         Document item = parse(req.body());
 
         try {
@@ -47,11 +47,11 @@ public class SingleDocumentService extends DBService {
         } 
         catch (Exception e) {
             res.status(500);
-            return 500;
+            return "{\"response\":\"Insert failed\"}";
         }
 
         res.status(201);
-        return 201;
+        return "{\"response\":\"Insert successful\"}";
     }
 
     /**
@@ -59,9 +59,9 @@ public class SingleDocumentService extends DBService {
      * 
      * @param req the request from the user
      * @param res the response to be sent to the user
-     * @return The appropriate response code (200 OK; 500 Internal error)
+     * @return A string containing the response in JSON format
      */
-    public static int put(Request req, Response res) {
+    public static String put(Request req, Response res) {
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
         Document update = new Document().append("$set", parse(request.getString("update")));
@@ -71,11 +71,11 @@ public class SingleDocumentService extends DBService {
         } 
         catch (Exception e) {
             res.status(500);
-            return 500;
+            return "{\"response\":\"Update successful\"}";            
         }
 
         res.status(200);
-        return 200;
+        return "{\"response\":\"Update successful\"}";
     }
 
     /**
@@ -83,18 +83,18 @@ public class SingleDocumentService extends DBService {
      * 
      * @param req The request from the user
      * @param res The response to be sent to the user
-     * @return The appropriate response code (200 OK; 404 Not Found)
+     * @return A string containing the response in JSON format
      */
-    public static int delete(Request req, Response res) {
+    public static String delete(Request req, Response res) {
         Document query = parse(req.body());
 
         if (client.getCollection(req.queryMap().get("collection").value()).findOneAndDelete(query) != null) {
             res.status(200);
-            return 200;
+            return "{\"response\":\"Delete successful\"}";
         } 
         else {
             res.status(404);
-            return 404;
+            return "{\"response\":\"Delete successful\"}";
         }
     }
 
