@@ -45,9 +45,8 @@ public class Routes {
         //Route /auth/
         path("/auth", () -> {
             //POST /auth/
-            post("/", (req,res) -> service.post(req, res)); //request api token
             //OPTIONS /auth/
-            options("/", (req,res) -> service.options(req,res)); //return available options for route
+            restful(service);
         });
     }
 
