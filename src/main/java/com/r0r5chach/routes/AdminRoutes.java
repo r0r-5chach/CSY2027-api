@@ -7,10 +7,10 @@ import static spark.Spark.path;
 import static spark.Spark.post;
 import static spark.Spark.put;
 
-import com.r0r5chach.services.MultipleDocumentService;
-import com.r0r5chach.services.SingleDocumentService;
 import com.r0r5chach.services.generic.DBService;
+import com.r0r5chach.services.generic.MultipleDocumentService;
 import com.r0r5chach.services.generic.Service;
+import com.r0r5chach.services.generic.SingleDocumentService;
 
 public class AdminRoutes {
     private static Service service;
