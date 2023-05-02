@@ -18,6 +18,36 @@
         [x] post method
         [x] put method
         [x] delete method
+    [ ] UserService
+    [ ] AdminService
+        [ ] CRUD
+            [ ] User accounts
+            [ ] courses
+            [ ] modules
+            [ ] enrol students 
+            [ ] Assign staff to courses and modules
+            [ ] Assign grades to students
+            [ ] student and staff records
+            [ ] generate academic reports
+            [ ] attendance reports
+            [ ] personal timetables (for users)
+            [ ] personal diary (for users) ? ask Kolade
+            [ ] Archive
+    [ ] StaffService
+        [ ] Update courses and modules
+        [ ] assign grades
+        [ ] view student records
+        [ ] generate academic reports
+        [ ] update attendance records
+        [ ] update personal timetables ? ask kolade if this is student and/or their own
+        [ ] update personal diary ? ask kolade if this is student and/or their own also what diary is
+        [ ] update personal information
+    [ ] StudentService ? ask kolade if students have diary too
+        [ ] Enrol in courses
+        [ ] Amend personal information
+        [ ] Retrieve personal information
+        [ ] Search personal data
+        [ ] Archive ? ask Kolade why students should be able to archive
     [o] AuthService
         [ ] options method
         [x] implement authentication
