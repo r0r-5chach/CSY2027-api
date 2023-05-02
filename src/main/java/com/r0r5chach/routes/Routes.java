@@ -3,11 +3,13 @@ package com.r0r5chach.routes;
 import static com.r0r5chach.routes.AdminRoutes.admin;
 import static com.r0r5chach.routes.StaffRoutes.staff;
 import static com.r0r5chach.routes.StudentRoutes.student;
+import static com.r0r5chach.routes.UsersRoutes.users;
 import static spark.Spark.before;
 import static spark.Spark.options;
 import static spark.Spark.path;
 import static spark.Spark.post;
 
+import com.r0r5chach.services.UsersService;
 import com.r0r5chach.services.generic.AuthService;
 
 public class Routes {
@@ -26,6 +28,10 @@ public class Routes {
             //Route /api/student/
             before("/student/*", AuthService::studentAuth);
             student();
+
+            //Route /api/users/
+            before("/users/*", UsersService::auth);
+            users();
         });
         
     }
