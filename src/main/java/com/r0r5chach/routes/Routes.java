@@ -13,16 +13,18 @@ import com.r0r5chach.services.generic.AuthService;
 public class Routes {
     
     public static void api() {
-        //Route domain.com/api/
+        //Route /api/
         path ("/api", () -> {
-            //Route domain.com/api/admin/
+            //Route /api/admin/
             before("/admin/*", AuthService::adminAuth);
             admin();
 
-            before("/admin/*", AuthService::staffAuth);
+            //Route /api/staff/
+            before("/staff/*", AuthService::staffAuth);
             staff();
 
-            before("/admin/*", AuthService::studentAuth);
+            //Route /api/student/
+            before("/student/*", AuthService::studentAuth);
             student();
         });
         
@@ -30,10 +32,11 @@ public class Routes {
 
     public static void auth() {
         AuthService service = new AuthService();
+        //Route /auth/
         path("/auth", () -> {
-            //POST domain.com/auth/
+            //POST /auth/
             post("/", (req,res) -> service.post(req, res)); //request api token
-            //OPTIONS domain.com/auth/
+            //OPTIONS /auth/
             options("/", (req,res) -> service.options(req,res)); //return available options for route
         });
     }

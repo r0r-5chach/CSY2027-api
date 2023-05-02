@@ -17,7 +17,7 @@ public class App
      */
     public static void main( String[] args )
     {
-        //Authentication
+        //Route domain.com/auth/
         Routes.auth();
 
         //Route domain.com/api/
