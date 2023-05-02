@@ -1,6 +1,7 @@
 package com.r0r5chach.services.generic;
 
 import static org.bson.Document.parse;
+import static spark.Spark.halt;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -15,7 +16,7 @@ import spark.Request;
 import spark.Response;
 
 public class AuthService extends DBService {
-    protected static String post(Request req, Response res) {
+    public String post(Request req, Response res) { 
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection("users");
         if (col.countDocuments(query) < 0) {
@@ -40,12 +41,12 @@ public class AuthService extends DBService {
         }
     }
 
-    public static String options(Request req, Response res) {
+    public String options(Request req, Response res) {
         //TODO: return options available for auth service
         return "";
     }
 
-    public static boolean tokenExists(String token) {
+    private static boolean tokenExists(String token) {
         Document query = new Document().append("token", token);
         if (client.getCollection("users").countDocuments(query) > 0) {
             return true;
@@ -55,7 +56,14 @@ public class AuthService extends DBService {
         }
     }
 
-    private static String generateToken() {
+    public static Access tokenAccess(String token) {
+        Document doc = new Document().append("token", token);
+        doc = client.getCollection("users").find(doc).first();
+        return Access.valueOf(doc.getString("access"));
+        //TODO: return the access level of the apitoken
+    }
+
+    private String generateToken() {
         String token = encodeHexString(generateBytes());
         if (token.equals("")) {
             return "";
@@ -65,7 +73,7 @@ public class AuthService extends DBService {
         }
     }
 
-    private static byte[] generateBytes() {
+    private byte[] generateBytes() {
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("AES");
             keyGen.init(256);
@@ -79,14 +87,14 @@ public class AuthService extends DBService {
         
     }
 
-    private static String byteToHex(byte num) {
+    private String byteToHex(byte num) {
         char[] hexDigits = new char[2];
         hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);
         hexDigits[1] = Character.forDigit((num & 0xF), 16);
         return new String(hexDigits);
     }
 
-    private static String encodeHexString(byte[] byteArray) {
+    private String encodeHexString(byte[] byteArray) {
         if (byteArray == null) {
             return "";
         }
@@ -95,5 +103,33 @@ public class AuthService extends DBService {
             hexStringBuffer.append(byteToHex(byteArray[i]));
         }
         return hexStringBuffer.toString();
+    }
+
+    public static void tokenAuth(Request req, Response res) {
+        String token = req.queryMap().get("token").value();
+        if (!tokenExists(token)) {
+            halt(401, "Unauthorized");
+        }
+    }
+
+    public static void adminAuth(Request req, Response res) {
+        String token = req.queryMap().get("token").value();
+        if (tokenAccess(token) != Access.ADMIN) {
+            halt(401, "Unauthorized");
+        }
+    }
+
+    public static void staffAuth(Request req, Response res) {
+        String token = req.queryMap().get("token").value();
+        if (tokenAccess(token) != Access.STAFF) {
+            halt(401, "Unauthorized");
+        }
+    }
+
+    public static void studentAuth(Request req, Response res) {
+        String token = req.queryMap().get("token").value();
+        if (tokenAccess(token) != Access.STUDENT) {
+            halt(401, "Unauthorized");
+        }
     }
 }

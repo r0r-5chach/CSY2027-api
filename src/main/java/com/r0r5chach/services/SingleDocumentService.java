@@ -5,12 +5,12 @@ import static org.bson.Document.parse;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
-import com.r0r5chach.services.generic.SecureDBService;
+import com.r0r5chach.services.generic.DBService;
 
 import spark.Request;
 import spark.Response;
 
-public class SingleDocumentService extends SecureDBService {
+public class SingleDocumentService extends DBService {
     
      /**
      * Method that handles a GET request on route /db/one/
@@ -19,7 +19,7 @@ public class SingleDocumentService extends SecureDBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    protected static String get(Request req, Response res) {
+    public String get(Request req, Response res) {
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
             
@@ -40,7 +40,7 @@ public class SingleDocumentService extends SecureDBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    protected static String post(Request req, Response res) {
+    public String post(Request req, Response res) {
         Document item = parse(req.body());
 
         try {
@@ -62,7 +62,7 @@ public class SingleDocumentService extends SecureDBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    protected static String put(Request req, Response res) {
+    public String put(Request req, Response res) {
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
         Document update = new Document().append("$set", parse(request.getString("update")));
@@ -86,7 +86,7 @@ public class SingleDocumentService extends SecureDBService {
      * @param res The response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    protected static String delete(Request req, Response res) {
+    public String delete(Request req, Response res) {
         Document query = parse(req.body());
         try {
             client.getCollection(req.queryMap().get("collection").value()).deleteOne(query);
@@ -100,7 +100,7 @@ public class SingleDocumentService extends SecureDBService {
         return "{\"response\":\"Delete successful\"}";
     }
 
-    protected static String options(Request req, Response res) {
+    public String options(Request req, Response res) {
         //TODO: create options method for single document queries
         return "";
     }

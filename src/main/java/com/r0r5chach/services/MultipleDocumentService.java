@@ -8,12 +8,12 @@ import org.bson.Document;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import com.r0r5chach.services.generic.SecureDBService;
+import com.r0r5chach.services.generic.DBService;
 
 import spark.Request;
 import spark.Response;
 
-public class MultipleDocumentService extends SecureDBService{
+public class MultipleDocumentService extends DBService{
 
      /**
      * Method that handles a GET request to route /db/many/
@@ -21,7 +21,7 @@ public class MultipleDocumentService extends SecureDBService{
      * @param res The response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    protected static String get(Request req, Response res) {
+    public String get(Request req, Response res) {
         //TODO: test
         res.type("application/json");
         Document query = parse(req.body());
@@ -37,7 +37,7 @@ public class MultipleDocumentService extends SecureDBService{
         }   
     }
 
-    protected static String post(Request req, Response res) {
+    public String post(Request req, Response res) {
         //TODO: test
         List<Document> items = parse(req.body()).getList("docs", Document.class);
 
@@ -53,7 +53,7 @@ public class MultipleDocumentService extends SecureDBService{
         return "{\"response\":\"Insert successful\"}";
     }
 
-    protected static String put(Request req, Response res) {
+    public String put(Request req, Response res) {
         //TODO: test
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
@@ -71,7 +71,7 @@ public class MultipleDocumentService extends SecureDBService{
         return "{\"response\":\"Update successful\"}";
     }
 
-    protected static String delete(Request req, Response res) {
+    public String delete(Request req, Response res) {
         //TODO: test
         Document query = parse(req.body());
 
@@ -87,12 +87,12 @@ public class MultipleDocumentService extends SecureDBService{
         return "{\"response\":\"Delete successful\"}";
     }
 
-    protected static String options(Request req, Response res) {
+    public String options(Request req, Response res) {
         //TODO: create options method for multiple document queries
         return "";
     }
 
-    private static String toJson(FindIterable<Document> docs) {
+    private String toJson(FindIterable<Document> docs) {
         StringBuilder output = new StringBuilder("{\"results\" : [");
         //TODO: test
         for (Document doc : docs) {
