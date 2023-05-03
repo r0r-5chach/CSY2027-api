@@ -1,6 +1,9 @@
-package com.r0r5chach.entities;
+package com.r0r5chach.entities.user;
 
 import java.util.List;
+
+import com.r0r5chach.entities.Course;
+import com.r0r5chach.entities.qualification.Qualification;
 
 
 public class Student extends Profile {

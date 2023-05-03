@@ -1,4 +1,4 @@
-package com.r0r5chach.entities;
+package com.r0r5chach.entities.user;
 
 import java.util.List;
 
