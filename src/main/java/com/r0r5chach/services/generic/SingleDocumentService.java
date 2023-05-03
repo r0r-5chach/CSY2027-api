@@ -18,9 +18,10 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String get(Request req, Response res) {
+    public String get(Request req, Response res, String collection) {
         Document query = parse(req.body());
-        MongoCollection<Document> col = client.getCollection(req.queryMap().get("collection").value());
+        checkCollection(collection, req);
+        MongoCollection<Document> col = client.getCollection(collection);
             
         if (col.countDocuments(query) > 0) {
             res.status(200);
@@ -39,11 +40,11 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String post(Request req, Response res) {
+    public String post(Request req, Response res, String collection) {
         Document item = parse(req.body());
-
+        checkCollection(collection, req);
         try {
-            client.getCollection(req.queryMap().get("collection").value()).insertOne(item);
+            client.getCollection(collection).insertOne(item);
         } 
         catch (Exception e) {
             res.status(500);
@@ -61,13 +62,13 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String put(Request req, Response res) {
+    public String put(Request req, Response res, String collection) {
         Document request = parse(req.body());
         Document query = parse(request.getString("query"));
         Document update = new Document().append("$set", parse(request.getString("update")));
-
+        checkCollection(collection, req);
         try {
-            client.getCollection(req.queryMap().get("collection").value()).updateOne(query, update);
+            client.getCollection(collection).updateOne(query, update);
         } 
         catch (Exception e) {
             res.status(500);
@@ -85,10 +86,11 @@ public class SingleDocumentService extends DBService {
      * @param res The response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String delete(Request req, Response res) {
+    public String delete(Request req, Response res, String collection) {
         Document query = parse(req.body());
+        checkCollection(collection, req);
         try {
-            client.getCollection(req.queryMap().get("collection").value()).deleteOne(query);
+            client.getCollection(collection).deleteOne(query);
         }
         catch (Exception e) {
             res.status(500);
@@ -102,5 +104,11 @@ public class SingleDocumentService extends DBService {
     public String options(Request req, Response res) {
         //TODO: create options method for single document queries
         return "";
+    }
+
+    private void checkCollection(String collection, Request req) {
+        if (collection.equals("")) {
+            collection = req.queryMap().get("collection").value();
+        }
     }
 }

@@ -19,9 +19,9 @@
         [x] put method
         [x] delete method
     [ ] UserService
+        [ ] User accounts
     [ ] AdminService
         [ ] CRUD
-            [ ] User accounts
             [ ] courses
             [ ] modules
             [ ] enrol students 
