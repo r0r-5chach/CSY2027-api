@@ -5,34 +5,43 @@ import java.util.List;
 public class Staff extends Profile {
     private Address address;
     private List<String> roles, specialisms;
-
+    private Reason.Staff dormantReason;
     
 
-    public Staff(Name name, Status recordStatus, Reason dormantReason, String phoneNumber, String email, User profile, Address address) {
-        super(name, recordStatus, dormantReason, phoneNumber, email, profile);
+    public Staff(Name name, Status recordStatus, String phoneNumber, String email, User profile, Address address) {
+        super(name, recordStatus, phoneNumber, email, profile);
         this.address = address;
     }
-    public Staff(int id, Name name, Status recordStatus, Reason dormantReason, String phoneNumber, String email, User profile, Address address) {
-        super(id, name, recordStatus, dormantReason, phoneNumber, email, profile);
+    public Staff(int id, Name name, Status recordStatus, String phoneNumber, String email, User profile, Address address) {
+        super(id, name, recordStatus, phoneNumber, email, profile);
         this.address = address;
     }
 
-    public Staff(Name name, Status recordStatus, Reason dormantReason, String phoneNumber, String email, User profile, Address address, List<String> roles) {
-        this(name, recordStatus, dormantReason, phoneNumber, email, profile, address);
+    public Staff(Name name, Status recordStatus,  String phoneNumber, String email, User profile, Address address, List<String> roles) {
+        this(name, recordStatus, phoneNumber, email, profile, address);
         this.roles = roles;
     }
-    public Staff(int id, Name name, Status recordStatus, Reason dormantReason, String phoneNumber, String email, User profile, Address address, List<String> roles) {
-        this(id, name, recordStatus, dormantReason, phoneNumber, email, profile, address);
+    public Staff(int id, Name name, Status recordStatus,  String phoneNumber, String email, User profile, Address address, List<String> roles) {
+        this(id, name, recordStatus, phoneNumber, email, profile, address);
         this.roles = roles;
     }
 
-    public Staff(Name name, Status recordStatus, Reason dormantReason, String phoneNumber, String email, User profile, Address address, List<String> roles, List<String> specialisms) {
-        this(name, recordStatus, dormantReason, phoneNumber, email, profile, address, roles);
+    public Staff(Name name, Status recordStatus,  String phoneNumber, String email, User profile, Address address, List<String> roles, List<String> specialisms) {
+        this(name, recordStatus, phoneNumber, email, profile, address, roles);
         this.specialisms = specialisms;
     }
-    public Staff(int id, Name name, Status recordStatus, Reason dormantReason, String phoneNumber, String email, User profile, Address address, List<String> roles, List<String> specialisms) {
-        this(id, name, recordStatus, dormantReason, phoneNumber, email, profile, address, roles);
+    public Staff(int id, Name name, Status recordStatus,  String phoneNumber, String email, User profile, Address address, List<String> roles, List<String> specialisms) {
+        this(id, name, recordStatus, phoneNumber, email, profile, address, roles);
         this.specialisms = specialisms;
+    }
+
+    public Staff(Name name, Status recordStatus,  String phoneNumber, String email, User profile, Address address, List<String> roles, List<String> specialisms, Reason.Staff dormantReason) {
+        this(name, recordStatus, phoneNumber, email, profile, address, roles, specialisms);
+        this.dormantReason = dormantReason;
+    }
+    public Staff(int id, Name name, Status recordStatus,  String phoneNumber, String email, User profile, Address address, List<String> roles, List<String> specialisms, Reason.Staff dormantReason) {
+        this(id, name, recordStatus, phoneNumber, email, profile, address, roles, specialisms);
+        this.dormantReason = dormantReason;
     }
 
     public Address getAddress() {
@@ -52,6 +61,12 @@ public class Staff extends Profile {
     }
     public void setSpecialisms(List<String> specialisms) {
         this.specialisms = specialisms;
+    }
+    public Reason.Staff getDormantReason() {
+        return dormantReason;
+    }
+    public void setDormantReason(Reason.Staff dormantReason) {
+        this.dormantReason = dormantReason;
     }
 
     
