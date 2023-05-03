@@ -60,7 +60,6 @@ public class AuthService extends DBService {
         Document doc = new Document().append("token", token);
         doc = client.getCollection("users").find(doc).first();
         return Access.valueOf(doc.getString("access"));
-        //TODO: return the access level of the apitoken
     }
 
     private String generateToken() {
