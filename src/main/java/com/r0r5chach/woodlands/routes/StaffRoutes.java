@@ -5,7 +5,9 @@ import static spark.Spark.before;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
-import com.r0r5chach.woodlands.services.StaffService;
+import com.r0r5chach.woodlands.services.staff.CourseService;
+import com.r0r5chach.woodlands.services.staff.ModuleService;
+import com.r0r5chach.woodlands.services.staff.StaffService;
 
 public class StaffRoutes {
     private static Service service;
@@ -28,7 +30,7 @@ public class StaffRoutes {
     }
 
     private static void module() {
-        service = new StaffService.ModuleService();
+        service = new ModuleService();
         path("/module", () -> {
             restful(service);
 
@@ -36,7 +38,7 @@ public class StaffRoutes {
     }
 
     private static void course() {
-        service = new StaffService.CourseService();
+        service = new CourseService();
         path("/course", () -> {
             restful(service);
 

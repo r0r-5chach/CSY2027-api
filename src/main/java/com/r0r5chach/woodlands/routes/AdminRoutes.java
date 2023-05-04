@@ -4,8 +4,8 @@ import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
-import com.r0r5chach.binaryMindsAPI.services.db.MultipleDocumentService;
-import com.r0r5chach.binaryMindsAPI.services.db.SingleDocumentService;
+import com.r0r5chach.woodlands.services.db.WoodlandsMDService;
+import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 public class AdminRoutes {
     private static Service service;
 
@@ -45,7 +45,7 @@ public class AdminRoutes {
     }
     
     private static void dbOne() {
-        service = new SingleDocumentService();
+        service = new WoodlandsSDService();
         //Route /one/
         path("/one", () -> {
             //POST /one/?token&collection Create document
@@ -58,7 +58,7 @@ public class AdminRoutes {
     }
     
     private static void dbMany() {
-        service = new MultipleDocumentService();
+        service = new WoodlandsMDService();
         //Route /many/
         path("/many", () -> {
             //POST /many/?token&collection Create document

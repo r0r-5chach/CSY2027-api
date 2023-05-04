@@ -7,7 +7,7 @@ import com.r0r5chach.binaryMindsAPI.services.AuthService;
 import spark.Request;
 import spark.Response;
 
-public class UsersService extends APIService {
+public class UsersService extends WoodlandsService {
     protected static String collection = "users";
 
     public static void auth(Request req, Response res) {

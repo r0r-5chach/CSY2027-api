@@ -1,13 +1,13 @@
-package com.r0r5chach.woodlands.services;
+package com.r0r5chach.woodlands.services.staff;
 
 import com.r0r5chach.binaryMindsAPI.Access;
-import com.r0r5chach.binaryMindsAPI.services.APIService;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
+import com.r0r5chach.woodlands.services.WoodlandsService;
 
 import spark.Request;
 import spark.Response;
 
-public class StaffService extends APIService{
+public class StaffService extends WoodlandsService {
     protected static String collection = "staff";
 
     //TODO: Advanced endpoints
@@ -21,14 +21,5 @@ public class StaffService extends APIService{
                 AuthService.accessAuth(req, res, Access.ADMIN);
                 break;
         }
-    }
-
-    public static class CourseService extends APIService {
-        protected static String collection = "courses";
-
-    }
-
-    public static class ModuleService extends APIService {
-        protected static String collection = "modules";
     }
 }

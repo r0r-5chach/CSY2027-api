@@ -4,7 +4,7 @@ import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
-import com.r0r5chach.woodlands.services.StudentService;
+import com.r0r5chach.woodlands.services.student.StudentService;
 
 public class StudentRoutes {
     private static Service service;
