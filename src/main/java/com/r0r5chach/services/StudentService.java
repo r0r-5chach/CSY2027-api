@@ -5,7 +5,8 @@ import com.r0r5chach.services.generic.APIService;
 public class StudentService extends APIService{
     protected static String collection = "students";
 
-    //Advanced endpoints
+    //TODO: Advanced endpoints
+
     //enrol service
     //grade service
     //attendance service
