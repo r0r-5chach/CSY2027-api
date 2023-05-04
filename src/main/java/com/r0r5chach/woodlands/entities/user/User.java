@@ -1,6 +1,6 @@
 package com.r0r5chach.woodlands.entities.user;
 
-import com.r0r5chach.woodlands.entities.Access;
+import com.r0r5chach.binaryMindsAPI.Access;
 
 public class User {
     private int id;

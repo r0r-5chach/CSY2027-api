@@ -1,6 +1,7 @@
 package com.r0r5chach.woodlands.routes;
 
 import static com.r0r5chach.woodlands.routes.Routes.restful;
+import static spark.Spark.before;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
@@ -14,8 +15,10 @@ public class StaffRoutes {
         path("/staff", () -> {
             restful(service);
             //Route /staff/course/
+            before("/course/*", StaffService::cdAuth);
             course();
             //Route /staff/module/
+            before("/module/*", StaffService::cdAuth);
             module();
             //Route staff/timetable/
             timetable();

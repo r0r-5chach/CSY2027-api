@@ -11,8 +11,8 @@ import javax.crypto.SecretKey;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
+import com.r0r5chach.binaryMindsAPI.Access;
 import com.r0r5chach.binaryMindsAPI.services.db.DBService;
-import com.r0r5chach.woodlands.entities.Access;
 
 import spark.Request;
 import spark.Response;
@@ -113,16 +113,9 @@ public class AuthService extends DBService {
         }
     }
 
-    public static void adminAuth(Request req, Response res) {
+    public static void accessAuth(Request req, Response res, Access type) {
         String token = req.queryMap().get("token").value();
-        if (tokenAccess(token) != Access.ADMIN) {
-            halt(401, "Unauthorized");
-        }
-    }
-
-    public static void staffAuth(Request req, Response res) {
-        String token = req.queryMap().get("token").value();
-        if (tokenAccess(token) != Access.STAFF && tokenAccess(token) != Access.ADMIN) {
+        if (tokenAccess(token) != Access.ADMIN && tokenAccess(token) != type) {
             halt(401, "Unauthorized");
         }
     }

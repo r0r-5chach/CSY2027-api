@@ -1,6 +1,8 @@
 package com.r0r5chach.woodlands.services;
 
-public class StudentService extends WoodlandsService {
+import com.r0r5chach.binaryMindsAPI.services.APIService;
+
+public class StudentService extends APIService {
     protected static String collection = "students";
 
     //TODO: Advanced endpoints

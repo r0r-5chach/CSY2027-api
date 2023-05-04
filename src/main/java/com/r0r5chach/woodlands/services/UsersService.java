@@ -1,35 +1,23 @@
 package com.r0r5chach.woodlands.services;
 
-import static com.r0r5chach.binaryMindsAPI.services.AuthService.tokenAccess;
-import static org.bson.Document.parse;
-import static spark.Spark.halt;
-
-import org.bson.Document;
-
+import com.r0r5chach.binaryMindsAPI.Access;
+import com.r0r5chach.binaryMindsAPI.services.APIService;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
-import com.r0r5chach.woodlands.entities.Access;
 
 import spark.Request;
 import spark.Response;
 
-public class UsersService extends WoodlandsService {
+public class UsersService extends APIService {
     protected static String collection = "users";
 
     public static void auth(Request req, Response res) {
-        String token = req.queryMap().get("token").value();
-        Document userQuery = parse(req.body());
-        Document tokenQuery = new Document().append("token", token);
         switch(req.requestMethod()) {
             case "POST":
             case "DELETE":
-                AuthService.adminAuth(req, res);
+                AuthService.accessAuth(req, res, Access.ADMIN);
                 break;
             default:
-                userQuery = parse(service.get(req,res,collection));
-                tokenQuery = parse(service.get(req, res, collection));
-                if (!userQuery.getInteger("id").equals(tokenQuery.getInteger("id")) && tokenAccess(token) != Access.ADMIN) {
-                    halt(404, "Unauthorized");
-                }
+                APIService.auth(req, res);
                 break;
         }
     }

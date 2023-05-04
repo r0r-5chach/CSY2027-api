@@ -12,6 +12,7 @@ import static spark.Spark.path;
 import static spark.Spark.post;
 import static spark.Spark.put;
 
+import com.r0r5chach.binaryMindsAPI.Access;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
 import com.r0r5chach.binaryMindsAPI.services.Service;
 import com.r0r5chach.woodlands.services.UsersService;
@@ -22,11 +23,11 @@ public class Routes {
         //Route /api/
         path ("/api", () -> {
             //Route /api/admin/
-            before("/admin/*", AuthService::adminAuth);
+            before("/admin/*", (req,res) -> AuthService.accessAuth(req, res, Access.ADMIN));
             admin();
 
             //Route /api/staff/
-            before("/staff/*", AuthService::staffAuth);
+            before("/staff/*", (req,res) -> AuthService.accessAuth(req, res, Access.STAFF));
             staff();
 
             

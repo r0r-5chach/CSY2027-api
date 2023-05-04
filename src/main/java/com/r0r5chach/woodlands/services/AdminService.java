@@ -1,5 +1,7 @@
 package com.r0r5chach.woodlands.services;
 
-public class AdminService {
+import com.r0r5chach.binaryMindsAPI.services.APIService;
+
+public class AdminService extends APIService {
     
 }

@@ -19,31 +19,28 @@
     [ ] AdminService
         [ ] CRUD
             [ ] enrol students 
-            [ ] Assign staff to courses and modules
+            [x] Assign staff to courses and modules
             [ ] Assign grades to students
             [ ] generate academic reports
             [ ] attendance reports
             [ ] personal timetables (for users)
             [ ] personal diary (for users) ? ask Kolade
-            [ ] Archive
+            [ ] Archive (change delete to archive)
             [x] courses
             [x] modules
             [x] student and staff records
     [ ] StaffService
-        [ ] Update courses and modules
+        [o] Update courses and modules
         [ ] assign grades
         [ ] view student records
-        [ ] generate academic reports
+        [?] generate academic reports
         [ ] update attendance records
         [ ] update personal timetables
         [ ] update personal diary
-        [o] update personal information
+        [x] update personal information
     [ ] StudentService
         [ ] Enrol in courses
-        [o] Amend personal information
-        [o] Retrieve personal information
-        [ ] Search personal data
-        [ ] Archive ? ask Kolade why students should be able to archive
+        [x] CRUD personal data
     [o] AuthService
         [ ] options method
         [x] implement authentication

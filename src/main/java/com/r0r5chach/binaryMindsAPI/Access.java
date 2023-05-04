@@ -1,4 +1,4 @@
-package com.r0r5chach.woodlands.entities;
+package com.r0r5chach.binaryMindsAPI;
 
 public enum Access {
     ADMIN,
