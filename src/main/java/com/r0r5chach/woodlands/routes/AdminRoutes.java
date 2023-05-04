@@ -3,9 +3,9 @@ package com.r0r5chach.woodlands.routes;
 import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
-import com.r0r5chach.binaryMindsAPI.MultipleDocumentService;
-import com.r0r5chach.binaryMindsAPI.Service;
-import com.r0r5chach.binaryMindsAPI.SingleDocumentService;
+import com.r0r5chach.binaryMindsAPI.services.Service;
+import com.r0r5chach.binaryMindsAPI.services.db.MultipleDocumentService;
+import com.r0r5chach.binaryMindsAPI.services.db.SingleDocumentService;
 public class AdminRoutes {
     private static Service service;
 

@@ -1,4 +1,4 @@
-package com.r0r5chach.binaryMindsAPI;
+package com.r0r5chach.binaryMindsAPI.services.db;
 
 import static org.bson.Document.parse;
 

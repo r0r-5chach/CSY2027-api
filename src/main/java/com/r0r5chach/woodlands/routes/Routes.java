@@ -12,8 +12,8 @@ import static spark.Spark.path;
 import static spark.Spark.post;
 import static spark.Spark.put;
 
-import com.r0r5chach.binaryMindsAPI.AuthService;
-import com.r0r5chach.binaryMindsAPI.Service;
+import com.r0r5chach.binaryMindsAPI.services.AuthService;
+import com.r0r5chach.binaryMindsAPI.services.Service;
 import com.r0r5chach.woodlands.services.UsersService;
 
 public class Routes {

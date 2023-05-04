@@ -1,13 +1,13 @@
 package com.r0r5chach.woodlands.services;
 
-import static com.r0r5chach.binaryMindsAPI.AuthService.tokenAccess;
+import static com.r0r5chach.binaryMindsAPI.services.AuthService.tokenAccess;
 import static org.bson.Document.parse;
 import static spark.Spark.halt;
 
 import org.bson.Document;
 
-import com.r0r5chach.binaryMindsAPI.Access;
-import com.r0r5chach.binaryMindsAPI.AuthService;
+import com.r0r5chach.binaryMindsAPI.services.AuthService;
+import com.r0r5chach.woodlands.entities.Access;
 
 import spark.Request;
 import spark.Response;

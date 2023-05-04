@@ -1,4 +1,4 @@
-package com.r0r5chach.binaryMindsAPI;
+package com.r0r5chach.binaryMindsAPI.services;
 
 import spark.Request;
 import spark.Response;

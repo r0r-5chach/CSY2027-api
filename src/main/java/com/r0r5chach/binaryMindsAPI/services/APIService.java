@@ -1,4 +1,6 @@
-package com.r0r5chach.binaryMindsAPI;
+package com.r0r5chach.binaryMindsAPI.services;
+
+import com.r0r5chach.binaryMindsAPI.services.db.SingleDocumentService;
 
 import spark.Request;
 import spark.Response;

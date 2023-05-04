@@ -1,10 +1,11 @@
-package com.r0r5chach.binaryMindsAPI;
+package com.r0r5chach.binaryMindsAPI.services.db;
 
 import java.io.FileReader;
 import java.util.Properties;
 
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+import com.r0r5chach.binaryMindsAPI.services.Service;
 
 /**
  * Class that handles communicating to the database

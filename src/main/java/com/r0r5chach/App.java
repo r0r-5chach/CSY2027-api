@@ -2,7 +2,7 @@ package com.r0r5chach;
 
 import static spark.Spark.before;
 
-import com.r0r5chach.binaryMindsAPI.AuthService;
+import com.r0r5chach.binaryMindsAPI.services.AuthService;
 import com.r0r5chach.woodlands.routes.Routes;
 /**
  * Class that handles the entry point for the api and setup routes

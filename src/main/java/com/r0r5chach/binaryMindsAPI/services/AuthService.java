@@ -1,4 +1,4 @@
-package com.r0r5chach.binaryMindsAPI;
+package com.r0r5chach.binaryMindsAPI.services;
 
 import static org.bson.Document.parse;
 import static spark.Spark.halt;
@@ -11,6 +11,8 @@ import javax.crypto.SecretKey;
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
+import com.r0r5chach.binaryMindsAPI.services.db.DBService;
+import com.r0r5chach.woodlands.entities.Access;
 
 import spark.Request;
 import spark.Response;

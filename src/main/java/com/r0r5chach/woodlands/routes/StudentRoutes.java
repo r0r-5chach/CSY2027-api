@@ -3,7 +3,7 @@ package com.r0r5chach.woodlands.routes;
 import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
-import com.r0r5chach.binaryMindsAPI.Service;
+import com.r0r5chach.binaryMindsAPI.services.Service;
 import com.r0r5chach.woodlands.services.StudentService;
 
 public class StudentRoutes {
