@@ -3,6 +3,7 @@ package com.r0r5chach.routes;
 import static com.r0r5chach.routes.Routes.restful;
 import static spark.Spark.path;
 
+import com.r0r5chach.services.AdminService;
 import com.r0r5chach.services.generic.MultipleDocumentService;
 import com.r0r5chach.services.generic.Service;
 import com.r0r5chach.services.generic.SingleDocumentService;
@@ -20,12 +21,21 @@ public class AdminRoutes {
             //OPTIONS /admin/?token
             restful(service);
             
-
+            
             //Route /admin/db/
             db();
+            
+            //Route /admin/course/
+            course();
+            //Route /admin/module/
+            module();
+            //Route /admin/student/
+            student();
+            //Route /admin/staff/
+            staff();
         });
     }
-
+    
     private static void db() {
         service = new Service();
         //Route /db/
@@ -43,7 +53,7 @@ public class AdminRoutes {
             dbMany();
         });
     }
-
+    
     private static void dbOne() {
         service = new SingleDocumentService();
         //Route /one/
@@ -56,7 +66,7 @@ public class AdminRoutes {
             restful(service);
         });
     }
-
+    
     private static void dbMany() {
         service = new MultipleDocumentService();
         //Route /many/
@@ -65,8 +75,57 @@ public class AdminRoutes {
             //GET /many/?token&collection Read document
             //PUT /many/?token&collection Update document
             //DELETE /many/?token&collection Delete document
-            //OPTIONS domain.com/db/many/?token
+            //OPTIONS /many/?token
             restful(service);
+        });
+    }
+    
+    private static void course() {
+        service = new AdminService.CourseService();
+        path("/course", () -> {
+            //POST /course/?token Create course
+            //GET /course/?token Read course
+            //PUT /course/?token Update course
+            //DELETE /course/?token Delete document
+            //OPTIONS /course/?token
+            restful(service);
+        });
+    }
+    
+    private static void module() {
+        service = new AdminService.ModuleService();
+        path("/module", () -> {
+            restful(service);
+        });
+    }
+    
+    private static void student() {
+        path("/student", () -> {
+            restful(service);
+            //Route /student/enrol/
+            StudentAdminRoutes.enrol();
+            //Route /student/grade/
+            StudentAdminRoutes.grade();
+            //Route /student/attendance/
+            StudentAdminRoutes.attendance();
+            //Route /student/timetable/
+            StudentAdminRoutes.timetable();
+            //Route /student/diary/
+            StudentAdminRoutes.diary();
+        });
+    }
+    
+    private static void staff() {
+        path("/staff", () -> {
+            restful(service);
+            //Route /staff/course/
+            StaffAdminRoutes.course();
+            //Route /staff/module/
+            StaffAdminRoutes.module();
+            //Route staff/timetable/
+            StaffAdminRoutes.timetable();
+            //Route /staff/diary/
+            StaffAdminRoutes.diary();
         });
     }
 }

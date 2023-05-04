@@ -51,10 +51,10 @@ public class Routes {
     }
 
     public static void restful(Service service) {
-        get("/", (req,res) -> service.get(req, res));
-        post("/", (req,res) -> service.post(req, res));
-        put("/", (req,res) -> service.put(req, res));
-        delete("/", (req,res) -> service.delete(req, res));
-        options("/", (req,res) -> service.options(req, res)); //return available options for sub-routes
+        get("/", (req,res) -> service.get(req, res, ""));
+        post("/", (req,res) -> service.post(req, res, ""));
+        put("/", (req,res) -> service.put(req, res, ""));
+        delete("/", (req,res) -> service.delete(req, res, ""));
+        options("/", (req,res) -> service.options(req, res, "")); //return available options for sub-routes
     }
 }

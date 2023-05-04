@@ -8,7 +8,7 @@ import org.bson.Document;
 import spark.Request;
 import spark.Response;
 
-public class APIService {
+public class APIService extends Service{
     protected static String collection;
     protected static Service service = new SingleDocumentService();
     public static void auth(Request req, Response res) {

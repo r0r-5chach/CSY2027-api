@@ -31,6 +31,4 @@ public class Qualification {
     public void setDateReceived(Date dateReceived) {
         this.dateReceived = dateReceived;
     }
-
-    
 }
