@@ -1,8 +1,4 @@
 #Development
-    [ ] Create implemented versions of SecureDBService and DBService (move options methods to own class outside of generic package)
-    [o] SecureDBService
-        [ ] options method
-        [x] authenticate method
     [o] Multiple Document Queries
         [o] implement methods in entrypoint
         [ ] options method
@@ -22,27 +18,27 @@
         [o] User accounts
     [ ] AdminService
         [ ] CRUD
-            [ ] courses
-            [ ] modules
             [ ] enrol students 
             [ ] Assign staff to courses and modules
             [ ] Assign grades to students
-            [ ] student and staff records
             [ ] generate academic reports
             [ ] attendance reports
             [ ] personal timetables (for users)
             [ ] personal diary (for users) ? ask Kolade
             [ ] Archive
+            [x] courses
+            [x] modules
+            [x] student and staff records
     [ ] StaffService
         [ ] Update courses and modules
         [ ] assign grades
         [ ] view student records
         [ ] generate academic reports
         [ ] update attendance records
-        [ ] update personal timetables ? ask kolade if this is student and/or their own
-        [ ] update personal diary ? ask kolade if this is student and/or their own also what diary is
+        [ ] update personal timetables
+        [ ] update personal diary
         [o] update personal information
-    [ ] StudentService ? ask kolade if students have diary too
+    [ ] StudentService
         [ ] Enrol in courses
         [o] Amend personal information
         [o] Retrieve personal information

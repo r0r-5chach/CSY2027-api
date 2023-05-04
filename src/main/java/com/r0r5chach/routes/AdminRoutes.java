@@ -4,6 +4,8 @@ import static com.r0r5chach.routes.Routes.restful;
 import static spark.Spark.path;
 
 import com.r0r5chach.services.AdminService;
+import com.r0r5chach.services.StaffService;
+import com.r0r5chach.services.StudentService;
 import com.r0r5chach.services.generic.MultipleDocumentService;
 import com.r0r5chach.services.generic.Service;
 import com.r0r5chach.services.generic.SingleDocumentService;
@@ -100,6 +102,7 @@ public class AdminRoutes {
     }
     
     private static void student() {
+        service = new StudentService();
         path("/student", () -> {
             restful(service);
             //Route /student/enrol/
@@ -116,6 +119,7 @@ public class AdminRoutes {
     }
     
     private static void staff() {
+        service = new StaffService();
         path("/staff", () -> {
             restful(service);
             //Route /staff/course/
