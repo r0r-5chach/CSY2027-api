@@ -33,6 +33,18 @@ public class SingleDocumentService extends DBService {
         }
     }
 
+    public Document get(String collection, int id) {
+        Document query = parse("{\"id\":\""+ id +"\"}");
+        MongoCollection<Document> col = client.getCollection(collection);
+            
+        if (col.countDocuments(query) > 0) {
+            return col.find(query).first();
+        } 
+        else {
+            return parse("{\"response\":\"No Documents found\"}");
+        }
+    }
+
     /**
      * Method that handles a POST request to route /db/one/
      * 

@@ -1,0 +1,14 @@
+{
+    "id": 1,
+    "record_status":"DORMANT",
+    "dormant_reason":"RETIRED",
+    "first_name":"John",
+    "middle_names":["Theodore"],
+    "last_name":"Doe",
+    "address": {"house_number":2, "street":"Fake Street", "city":"Woodlands", "postcode":"WL12 3AB"},
+    "phone_number":"+1234567890",
+    "email":"john.doe@example.com",
+    "roles":["Tutor", "Lecturer"],
+    "specialisms": ["Computing"],
+    "profile": 3
+}

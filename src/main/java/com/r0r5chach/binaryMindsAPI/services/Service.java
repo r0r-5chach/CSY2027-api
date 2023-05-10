@@ -1,5 +1,7 @@
 package com.r0r5chach.binaryMindsAPI.services;
 
+import org.bson.Document;
+
 import spark.Request;
 import spark.Response;
 
@@ -7,6 +9,11 @@ public class Service {
     public String get(Request req, Response res, String collection) {
         return noEndpoint(res);
     }
+
+    public Document get(String collection, int id) {
+        return null;
+    }
+
     public String post(Request req, Response res, String collection) {
         return noEndpoint(res);
     }

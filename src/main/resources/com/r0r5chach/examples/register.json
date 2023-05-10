@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "lesson": 1,
+    "attendance": {
+        "attended": [1,2,3],
+        "late": [4,5,6],
+        "absent": [7,8,9]
+    }
+}

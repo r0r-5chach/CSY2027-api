@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "assignments": [1,2],
+    "tutor": 1,
+    "enrolled_students": [1]
+}

@@ -1,0 +1,19 @@
+{
+    "id": 1,
+    "record_status":"DORMANT",
+    "dormant_reason":"GRADUATED",
+    "first_name":"John",
+    "middle_names":["Theodore"],
+    "last_name":"Doe",
+    "addresses": {
+        "term": {"house_number":1, "street":"Dool Ally", "city":"Springfield", "postcode":"SF12 3AB"},
+        "non_term": {"house_number":2, "street":"Fake Street", "city":"Woodlands", "postcode":"WL12 3AB"}
+    },
+    "phone_number":"+1234567890",
+    "email":"john.doe@example.com",
+    "courses":[1,2,3],
+    "entry_qualifications":[{"grade":"A", "level":"GCSE", "date_received":"25/07/2015"}],
+    "personal_tutor": 1,
+    "profile": 2,
+    "results": [{"assignment":1, "grade":"A"}, {"assignment":2, "grade": "B"}]
+}

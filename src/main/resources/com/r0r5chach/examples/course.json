@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "modules":{
+        "first_year": [1,2,3],
+        "second_year": [4,5,6],
+        "third_year": [7,8,9]
+    },
+    "enrolled_students": [1]
+}

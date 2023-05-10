@@ -10,10 +10,6 @@ import spark.Response;
 public class StaffService extends WoodlandsService {
     protected static String collection = "staff";
 
-    //TODO: Advanced endpoints
-    //timetable service
-    //diary service
-
     public static void cdAuth(Request req, Response res) {
         switch(req.requestMethod()) {
             case "POST":
