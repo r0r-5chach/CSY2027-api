@@ -1,20 +1,29 @@
 #Development
-    [ ] correct auth access
+    [ ] Implement
         [ ] AttendanceService
+            [ ] collates information on get
+            [ ] on put take student id, lesson id, and attendance type to make changes (if higher privalege than student)
+    
         [ ] TimetableService
+            [ ] collates information on get
+        [ ] AssignmentService
         [ ] DiaryService
         [ ] GradeService
-    [ ] AttendanceService
-        [ ] collates information on get
-        [ ] on put take student id, lesson id, and attendance type to make changes (if higher privalege than student)
-    [ ] TimetableService
-        [ ] collates information on get
 
     [ ] Add in admin endpoints for
         [ ] lessons
             [ ] generate registers based off of lessons
         [ ] rooms
-    [ ] Add in staff endpoint for assignments
+    
+    [x] Add in staff endpoint for assignments
+    [x] Look into controlling specific file access for staff that then checks for their ID in the document
+    [x] correct auth access
+        [x] TimetableService (staff/student r)
+        [x] DiaryService (staff/student ru)
+        [x] AssignmentService (staff crud) (student r)
+        [x] GradeService (staff ru for assignments in their modules) (students r for classes)
+        [x] AttendanceService (staff ru for classes) (student r for classes)
+        [x] StaffService
 #Documentation
     [ ] DBService
         [ ] client attribute

@@ -59,8 +59,7 @@ public class AuthService extends DBService {
     }
 
     public static Access tokenAccess(String token) {
-        Document doc = new Document().append("token", token);
-        doc = client.getCollection("users").find(doc).first();
+        Document doc = tokenUser(token);
         return Access.valueOf(doc.getString("access"));
     }
 
@@ -118,5 +117,20 @@ public class AuthService extends DBService {
         if (tokenAccess(token) != Access.ADMIN && tokenAccess(token) != type) {
             halt(401, "Unauthorized");
         }
+    }
+
+    public static void accessAuth(String attribute, Request req) {
+        String token = req.queryMap().get("token").value();
+        Document tokenUser = tokenUser(token);
+        Document body = parse(req.body());
+        if (!tokenUser.getInteger("id").equals(body.getInteger(attribute))) {
+            halt(401, "Unauthorized");
+        }
+    }
+
+    private static Document tokenUser(String token) {
+        Document doc = new Document().append("token", token);
+        doc = client.getCollection("users").find(doc).first();
+        return doc;
     }
 }

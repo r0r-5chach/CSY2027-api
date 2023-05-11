@@ -7,14 +7,13 @@ import com.r0r5chach.woodlands.services.WoodlandsService;
 import spark.Request;
 import spark.Response;
 
-public class GradeService extends WoodlandsService {
-    protected static String collection = "assignment_result";
+public class AssignmentService extends WoodlandsService {
+    protected static String collection = "assignments";
+
     public static void auth(Request req, Response res) {
         switch(req.requestMethod()) {
             case "POST":
             case "DELETE":
-                AuthService.accessAuth(req, res, Access.ADMIN);
-                break;
             case "PUT":
                 AuthService.accessAuth("tutor", req);
                 AuthService.accessAuth(req, res, Access.STAFF);

@@ -16,6 +16,9 @@ public class StaffService extends WoodlandsService {
             case "DELETE":
                 AuthService.accessAuth(req, res, Access.ADMIN);
                 break;
+            default:
+                AuthService.accessAuth("tutor", req);
+                break;
         }
     }
 }

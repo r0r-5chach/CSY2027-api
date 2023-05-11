@@ -13,7 +13,7 @@
     "email":"john.doe@example.com",
     "courses":[1,2,3],
     "entry_qualifications":[{"grade":"A", "level":"GCSE", "date_received":"25/07/2015"}],
-    "personal_tutor": 1,
+    "tutor": 1,
     "profile": 2,
     "results": [{"assignment":1, "grade":"A"}, {"assignment":2, "grade": "B"}]
 }

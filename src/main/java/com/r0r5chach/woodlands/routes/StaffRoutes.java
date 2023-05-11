@@ -26,6 +26,8 @@ public class StaffRoutes {
             timetable();
             //Route /staff/diary/
             diary();
+            //Route /staff/assignments
+            assignments();
         });
     }
 
@@ -56,6 +58,12 @@ public class StaffRoutes {
         path("/diary", () -> {
             restful(service);
 
+        });
+    }
+
+    private static void assignments() {
+        path("/assignments", () -> {
+            restful(service);
         });
     }
 }
