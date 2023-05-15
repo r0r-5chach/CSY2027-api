@@ -4,6 +4,7 @@ import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
+import com.r0r5chach.woodlands.services.AdminService;
 import com.r0r5chach.woodlands.services.LessonService;
 import com.r0r5chach.woodlands.services.RoomService;
 import com.r0r5chach.woodlands.services.db.WoodlandsMDService;
@@ -12,7 +13,7 @@ public class AdminRoutes {
     private static Service service;
 
     public static void admin() {
-        service = new Service();
+        service = new AdminService();
         //Route /admin/
         path("/admin", () -> {
             //GET /admin/?token
