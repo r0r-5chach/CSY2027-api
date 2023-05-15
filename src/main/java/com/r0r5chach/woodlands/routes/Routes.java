@@ -13,13 +13,16 @@ import static spark.Spark.post;
 import static spark.Spark.put;
 
 import com.r0r5chach.binaryMindsAPI.Access;
+import com.r0r5chach.binaryMindsAPI.services.APIService;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
 import com.r0r5chach.binaryMindsAPI.services.Service;
 import com.r0r5chach.woodlands.services.UserService;
 
 public class Routes {
+    private static Service service;
     
     public static void api() {
+        service = new APIService();
         //Route /api/
         path ("/api", () -> {
             //Route /api/admin/
@@ -37,12 +40,14 @@ public class Routes {
 
             //Route /api/student/
             student();
+
+            restful(service);
         });
         
     }
 
     public static void auth() {
-        AuthService service = new AuthService();
+        service = new AuthService();
         //Route /auth/
         path("/auth", () -> {
             //POST /auth/

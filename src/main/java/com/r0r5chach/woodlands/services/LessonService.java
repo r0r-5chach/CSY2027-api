@@ -7,7 +7,7 @@ public class LessonService extends WoodlandsService {
     protected static String collection = "lessons";
 
     public String post(Request req, Response res) {
-        return super.post(req, res);
+        return super.post(req, res, "lessons");
         //TODO: when a lesson is created, make a corresponding register
     }
 }
