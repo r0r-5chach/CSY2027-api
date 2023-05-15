@@ -18,10 +18,10 @@ import spark.Request;
 import spark.Response;
 
 public class AuthService extends DBService {
-    public String post(Request req, Response res) { 
+    public String post(Request req, Response res, String collection) { 
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection("users");
-        if (col.countDocuments(query) < 0) {
+        if (col.countDocuments(query) > 0) {
             String token = "";
             do {
                 token = generateToken();
@@ -29,13 +29,16 @@ public class AuthService extends DBService {
                     res.status(500);
                     return "{\"response\":\"Generation failed\"}";
                 }
-            }while (tokenExists(token));
-            
-            Document update = new Document().append("token", token);
-            col.updateOne(query, update);
+                else {
+                    Document update = new Document().append("$set", new Document().append("token", token));
+                    col.updateOne(query, update);
 
-            res.status(200);
-            return token;
+                    res.status(200);
+                    return token;
+                }
+            }while (!tokenExists(token));
+            
+            
         }
         else {
             res.status(401);
@@ -43,9 +46,13 @@ public class AuthService extends DBService {
         }
     }
 
-    public String options(Request req, Response res) {
-        //TODO: return options available for auth service
-        return "";
+    public String options(Request req, Response res, String collection) {
+        Document response = new Document().append("GET", "No Endpoint");
+        response.append("POST", "Returns an Access token upon valid authentication");
+        response.append("PUT", "No Endpoint");
+        response.append("DELETE", "No Endpoint");
+        response.append("OPTIONS", "This list");
+        return response.toJson();
     }
 
     private static boolean tokenExists(String token) {
