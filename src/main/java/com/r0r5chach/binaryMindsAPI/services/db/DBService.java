@@ -1,6 +1,6 @@
 package com.r0r5chach.binaryMindsAPI.services.db;
 
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 import com.mongodb.client.MongoClients;
@@ -18,10 +18,10 @@ public class DBService extends Service {
      */
     protected static final MongoDatabase client = MongoClients.create().getDatabase(getDB()); 
 
-    private static String getDB() {
+    protected static String getDB() {
         Properties prop = new Properties();
         try {
-            prop.load(new FileReader(DBService.class.getResource(".properties").toString()));
+            prop.load(new InputStreamReader(Service.class.getResourceAsStream("/com/r0r5chach/.properties")));
         }
         catch (Exception e) {
             System.out.println(e); //TODO: Handle Error
