@@ -4,12 +4,12 @@ import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
-import com.r0r5chach.woodlands.services.UsersService;
+import com.r0r5chach.woodlands.services.UserService;
 
 public class UsersRoutes {
     private static Service service;
     public static void users() {
-        service = new UsersService();
+        service = new UserService();
         //Route /users/
         path("/users", () -> {
             //GET /users/?token&user must be same user as edited user or admin

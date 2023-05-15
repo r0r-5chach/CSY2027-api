@@ -9,11 +9,13 @@
         [ ] AssignmentService
         [ ] DiaryService
         [ ] GradeService
-
-    [ ] Add in admin endpoints for
-        [ ] lessons
+        [ ] LessonService
             [ ] generate registers based off of lessons
-        [ ] rooms
+
+
+    [x] Add in admin endpoints for
+        [x] lessons
+        [x] rooms
     
     [x] Add in staff endpoint for assignments
     [x] Look into controlling specific file access for staff that then checks for their ID in the document
