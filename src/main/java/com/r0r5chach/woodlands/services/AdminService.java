@@ -8,7 +8,7 @@ import spark.Request;
 import spark.Response;
 
 public class AdminService extends APIService {
-    public String options(Request req, Response res, String collection) {
+    public String options(Request req, Response res) {
         Document response = new Document().append("GET", "No Endpoint");
         response.append("POST", "No Endpoint");
         response.append("PUT", "No Endpoint");
