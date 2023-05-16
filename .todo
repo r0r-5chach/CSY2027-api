@@ -6,11 +6,28 @@
     
         [ ] TimetableService
             [ ] collates information on get
-        [ ] AssignmentService
+        [x] AssignmentService
         [ ] DiaryService
+            [ ] get specific field from doc, put changes the field
         [ ] GradeService
+            [ ] get specified field from results list (student)
         [ ] LessonService
             [ ] generate registers based off of lessons
+
+        [ ] Options method
+            [ ] assignments
+            [ ] attendance
+            [ ] diary
+            [ ] enrol
+            [ ] grade
+            [ ] lesson
+            [ ] staff
+            [ ] student
+            [ ] timetable
+            [ ] user
+        [ ] archive instead of delete
+            [ ] add attribute called archived (set to true)
+            [ ] when searching DB add attribute to every query to set archived to false (unless searching archive)
 
 
     [x] Add in admin endpoints for

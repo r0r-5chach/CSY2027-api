@@ -3,6 +3,7 @@ package com.r0r5chach.binaryMindsAPI.services.db;
 import static org.bson.Document.parse;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoCollection;
 
@@ -32,8 +33,8 @@ public class SingleDocumentService extends DBService {
         }
     }
 
-    public Document get(String collection, int id) {
-        Document query = parse("{\"id\":\""+ id +"\"}");
+    public Document get(String collection, ObjectId id) {
+        Document query = new Document().append("_id", id);
         MongoCollection<Document> col = client.getCollection(collection);
             
         if (col.countDocuments(query) > 0) {

@@ -5,6 +5,7 @@ import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
 import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
+import com.r0r5chach.woodlands.services.student.AttendanceService;
 
 public class StudentRoutes {
     private static Service service;
@@ -38,6 +39,7 @@ public class StudentRoutes {
     }
 
     private static void attendance() {
+        service = new AttendanceService();
         path("/attendance", () -> {
             restful(service);
         });
