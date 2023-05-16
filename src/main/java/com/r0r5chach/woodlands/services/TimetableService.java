@@ -2,12 +2,18 @@ package com.r0r5chach.woodlands.services;
 
 import com.r0r5chach.binaryMindsAPI.Access;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
+import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 
 import spark.Request;
 import spark.Response;
 
-public class TimetableService extends WoodlandsService {
-    protected static String collection = "lessons";
+public class TimetableService extends WoodlandsSDService {
+    
+
+    public TimetableService() {
+        collection = "lessons";
+    }
+
     //TODO: auth for request method access
     public static void auth(Request req, Response res) {
         switch(req.requestMethod()) {

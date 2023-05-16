@@ -9,8 +9,7 @@ import com.mongodb.client.MongoCollection;
 import spark.Request;
 import spark.Response;
 
-public class SingleDocumentService extends DBService {
-    
+public class SingleDocumentService extends DBService {    
      /**
      * Method that handles a GET request on route /db/one/
      * 
@@ -18,9 +17,9 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String get(Request req, Response res, String collection) {
+    public String get(Request req, Response res) {
         Document query = parse(req.body());
-        checkCollection(collection, req);
+        checkCollection(req);
         MongoCollection<Document> col = client.getCollection(collection);
             
         if (col.countDocuments(query) > 0) {
@@ -52,9 +51,9 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String post(Request req, Response res, String collection) {
+    public String post(Request req, Response res) {
         Document item = parse(req.body());
-        checkCollection(collection, req);
+        checkCollection(req);
         try {
             client.getCollection(collection).insertOne(item);
         } 
@@ -74,11 +73,11 @@ public class SingleDocumentService extends DBService {
      * @param res the response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String put(Request req, Response res, String collection) {
+    public String put(Request req, Response res) {
         Document request = parse(req.body());
-        Document query = parse(request.getString("query"));
-        Document update = new Document().append("$set", parse(request.getString("update")));
-        checkCollection(collection, req);
+        Document query = request.get("query", Document.class);
+        Document update = new Document().append("$set", request.get("update", Document.class));
+        checkCollection(req);
         try {
             client.getCollection(collection).updateOne(query, update);
         } 
@@ -98,9 +97,9 @@ public class SingleDocumentService extends DBService {
      * @param res The response to be sent to the user
      * @return A string containing the response in JSON format
      */
-    public String delete(Request req, Response res, String collection) {
+    public String delete(Request req, Response res) {
         Document query = parse(req.body());
-        checkCollection(collection, req);
+        checkCollection(req);
         try {
             client.getCollection(collection).deleteOne(query);
         }
@@ -113,12 +112,7 @@ public class SingleDocumentService extends DBService {
         return "{\"response\":\"Delete successful\"}";
     }
 
-    public String options(Request req, Response res) {
-        //TODO: create options method for single document queries
-        return "";
-    }
-
-    private void checkCollection(String collection, Request req) {
+    private void checkCollection(Request req) {
         if (collection.equals("")) {
             collection = req.queryMap().get("collection").value();
         }

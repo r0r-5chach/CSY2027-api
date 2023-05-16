@@ -14,7 +14,7 @@ import spark.Response;
 
 public class MultipleDocumentService extends DBService{
 
-     /**
+       /**
      * Method that handles a GET request to route /db/many/
      * @param req The request from the user
      * @param res The response to be sent to the user
@@ -55,8 +55,8 @@ public class MultipleDocumentService extends DBService{
     public String put(Request req, Response res) {
         //TODO: test
         Document request = parse(req.body());
-        Document query = parse(request.getString("query"));
-        Document update = new Document().append("$set", parse(request.getString("update")));
+        Document query = request.get("query", Document.class);
+        Document update = new Document().append("$set", request.get("update", Document.class));
 
         try {
             client.getCollection(req.queryMap().get("collection").value()).updateMany(query, update);
@@ -70,7 +70,7 @@ public class MultipleDocumentService extends DBService{
         return "{\"response\":\"Update successful\"}";
     }
 
-    public String delete(Request req, Response res) {
+    public String delete(Request req, Response res) { //TODO: change to archive
         //TODO: test
         Document query = parse(req.body());
 
@@ -86,18 +86,13 @@ public class MultipleDocumentService extends DBService{
         return "{\"response\":\"Delete successful\"}";
     }
 
-    public String options(Request req, Response res) {
-        //TODO: create options method for multiple document queries
-        return "";
-    }
-
     private String toJson(FindIterable<Document> docs) {
         StringBuilder output = new StringBuilder("{\"results\" : [");
         //TODO: test
         for (Document doc : docs) {
             output.append("\"" + doc.toJson() + "\",");
         }
-        output.deleteCharAt(output.length());
+        output.deleteCharAt(output.length()-1);
         output.append("]}");
         return output.toString();
     }

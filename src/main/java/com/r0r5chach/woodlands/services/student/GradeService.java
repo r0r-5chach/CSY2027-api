@@ -2,13 +2,17 @@ package com.r0r5chach.woodlands.services.student;
 
 import com.r0r5chach.binaryMindsAPI.Access;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
-import com.r0r5chach.woodlands.services.WoodlandsService;
+import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 
 import spark.Request;
 import spark.Response;
 
-public class GradeService extends WoodlandsService {
-    protected static String collection = "assignment_result";
+public class GradeService extends WoodlandsSDService {
+    
+    public GradeService() {
+        collection = "students";
+    }
+
     public static void auth(Request req, Response res) {
         switch(req.requestMethod()) {
             case "POST":

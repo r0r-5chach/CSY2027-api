@@ -4,13 +4,13 @@ import static com.r0r5chach.woodlands.routes.Routes.restful;
 import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
-import com.r0r5chach.woodlands.services.student.StudentService;
+import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 
 public class StudentRoutes {
     private static Service service;
     
     public static void student() {
-        service = new StudentService();
+        service = new WoodlandsSDService("students");
         path("/student", () -> {
             restful(service);
             //Route /student/enrol/

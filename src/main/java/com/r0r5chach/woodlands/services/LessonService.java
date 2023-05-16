@@ -1,13 +1,9 @@
 package com.r0r5chach.woodlands.services;
 
-import spark.Request;
-import spark.Response;
+import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 
-public class LessonService extends WoodlandsService {
-    protected static String collection = "lessons";
-
-    public String post(Request req, Response res) {
-        return super.post(req, res, "lessons");
-        //TODO: when a lesson is created, make a corresponding register
+public class LessonService extends WoodlandsSDService {
+    public LessonService() {
+        collection = "lessons";
     }
 }

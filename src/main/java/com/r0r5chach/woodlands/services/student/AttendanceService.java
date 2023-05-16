@@ -2,13 +2,17 @@ package com.r0r5chach.woodlands.services.student;
 
 import com.r0r5chach.binaryMindsAPI.Access;
 import com.r0r5chach.binaryMindsAPI.services.AuthService;
-import com.r0r5chach.woodlands.services.WoodlandsService;
+import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 
 import spark.Request;
 import spark.Response;
 
-public class AttendanceService extends WoodlandsService {
-    protected static String collection = "modules";
+public class AttendanceService extends WoodlandsSDService {
+
+    public AttendanceService() {
+        collection = "modules";
+    }
+
     public static void auth(Request req, Response res) {
         switch(req.requestMethod()) {
             case "POST":

@@ -5,27 +5,29 @@ import org.bson.Document;
 import spark.Request;
 import spark.Response;
 
-public class APIService extends Service{
-    protected static String collection;
-    protected static Service service = new Service();
-    
-    public String get(Request req, Response res, String collection) {
-        return service.get(req, res, collection);
-    }
+public class APIService extends Service {
 
-    public String post(Request req, Response res, String collection) {
-        return service.post(req, res, collection);
-    }
-
-    public String put(Request req, Response res, String collection) {
-        return service.put(req, res, collection);
-    }
-
-    public String delete(Request req, Response res, String collection) {
-        return service.delete(req, res, collection);
+    public APIService() {
+        service = new Service();
     }
     
-    public String options(Request req, Response res, String collection) {
+    public String get(Request req, Response res) {
+        return service.get(req, res);
+    }
+
+    public String post(Request req, Response res) {
+        return service.post(req, res);
+    }
+
+    public String put(Request req, Response res) {
+        return service.put(req, res);
+    }
+
+    public String delete(Request req, Response res) {
+        return service.delete(req, res);
+    }
+    
+    public String options(Request req, Response res) {
         Document response = new Document().append("GET", "No Endpoint");
         response.append("POST", "No Endpoint");
         response.append("PUT", "No Endpoint");

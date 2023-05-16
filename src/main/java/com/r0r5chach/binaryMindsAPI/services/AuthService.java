@@ -18,7 +18,7 @@ import spark.Request;
 import spark.Response;
 
 public class AuthService extends DBService {
-    public String post(Request req, Response res, String collection) { 
+    public String post(Request req, Response res) { 
         Document query = parse(req.body());
         MongoCollection<Document> col = client.getCollection("users");
         if (col.countDocuments(query) > 0) {
@@ -46,7 +46,7 @@ public class AuthService extends DBService {
         }
     }
 
-    public String options(Request req, Response res, String collection) {
+    public String options(Request req, Response res) {
         Document response = new Document().append("GET", "No Endpoint");
         response.append("POST", "Returns an Access token upon valid authentication");
         response.append("PUT", "No Endpoint");

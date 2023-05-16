@@ -5,8 +5,7 @@ import static spark.Spark.path;
 
 import com.r0r5chach.binaryMindsAPI.services.Service;
 import com.r0r5chach.woodlands.services.AdminService;
-import com.r0r5chach.woodlands.services.LessonService;
-import com.r0r5chach.woodlands.services.RoomService;
+import com.r0r5chach.woodlands.services.db.WoodlandsDBService;
 import com.r0r5chach.woodlands.services.db.WoodlandsMDService;
 import com.r0r5chach.woodlands.services.db.WoodlandsSDService;
 public class AdminRoutes {
@@ -36,21 +35,21 @@ public class AdminRoutes {
     }
 
     private static void lessons() {
-        service = new LessonService();
+        service = new WoodlandsSDService("lessons");
         path("/lessons", () -> {
             restful(service);
         });
     }
 
     private static void rooms() {
-        service = new RoomService();
+        service = new WoodlandsSDService("rooms");
         path("/rooms", () -> {
             restful(service);
         });
     }
     
     private static void db() {
-        service = new Service();
+        service = new WoodlandsDBService();
         //Route /db/
         path("/db", () -> {
             //GET /db/?token
